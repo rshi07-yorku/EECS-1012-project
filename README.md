@@ -1,4 +1,4 @@
-# 📓 Password Protected Diary
+# Password Protected Diary
 
 this is made by chatgpt as a template, we'll change it later
 
@@ -6,27 +6,27 @@ A simple password-protected diary web app that allows users to view and add diar
 
 ---
 
-## 🔐 Features
+## Features
 
-### ✔ Password Authentication
+### Password Authentication
 - Prompts the user for a password.
 - If the password is **correct**, all existing diary entries are displayed in the diary “display area”.
 
-### ✔ Add Diary Entries
+### Add Diary Entries
 - Authenticated users can submit new diary entries.
 - New entries are saved on the server and immediately displayed.
 
-### ✔ Lock Button
+### Lock Button
 - Hides all diary information from the page.
 - Requires re-entering the password to unlock again.
 
-### ✔ Server-Stored Entries
+### Server-Stored Entries
 - All notes are stored server-side so they persist across sessions.
 - Entries are only sent to the frontend after successful authentication.
 
 ---
 
-## 🧱 Tech Stack (example)
+## Tech Stack (example)
 
 - **Frontend:** HTML, CSS, JavaScript  
 - **Backend:** Node.js / Express (or any backend)  
@@ -34,7 +34,7 @@ A simple password-protected diary web app that allows users to view and add diar
 
 ---
 
-## 🖼 How It Works
+## How It Works
 
 1. User visits the webpage.  
 2. A password input appears.  
@@ -44,11 +44,3 @@ A simple password-protected diary web app that allows users to view and add diar
    - “New Entry” form becomes available.
 5. User adds new entries → server saves them.
 6. User can press **Lock Diary** to hide all displayed entries.
-
----
-
-## 🚀 Setup & Run (example)
-
-```bash
-npm install
-npm start
