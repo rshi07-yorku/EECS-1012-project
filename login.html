@@ -23,10 +23,16 @@
                 <input type="password" placeholder="Password" required>
             </div>
             <div class="remember">
-                <label><input type="checkbox"> Remember me</label>
+                <!-- How are we planning to implement remember me as a function isn't it assumed they have to login every time they close out of the
+                 Webpage?-->
+                <label><input type="checkbox"> Remember Me</label>
             </div>
             
-            <button type="submit" class="btn">Login</button>
+    <button type="submit" class="btn" onclick="window.location.href ='index.html'">Login</button>
+                <!--Connectivity from the login page to the signup page if the user
+                has no account-->
+    <button type = "button" onclick = "window.location.href ='signup.html'">No Account?</button>
+    <button type="submit" class="btn" onclick="">Change Page Color</button>
         </form>
     </div>
 </body>
