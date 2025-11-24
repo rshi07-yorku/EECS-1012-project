@@ -27,7 +27,10 @@ A simple password-protected diary web app that allows users to view and add diar
 
 ## Features (WIP)
 
-below is gpt'ed, make correct later 
+### colorscheme
+- [catpuccin](https://catppuccin.com/palette/) latte/mocha for light dark
+
+below is partially gpt'ed, will correct later 
 
 ### Password Authentication
 - Prompts the user for a password.
