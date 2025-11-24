@@ -7,15 +7,13 @@ JavaScript files will be stored here
 
 1 js page per html for organization
 
-stackedit i guess
-
 ## edit.js functions
 - parse date from url since we access html/edit by adding ?date=xxx
 - create new md with hidden json 
     - who owns file
     - date created
     - last modified (maybe)
-- integrate stackedit
+- integrate marked
 - view/edit modes
 
 ## index.js functions

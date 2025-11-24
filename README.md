@@ -48,7 +48,7 @@ password-diary/
 - signup page, if logged in redirect
 
 ### edit.html
-- uses [stackedit](https://github.com/benweet/stackedit?tab=readme-ov-file) for markdown editing
+- uses [marked](https://github.com/markedjs/marked) for markdown editing
 - takes in a query (date), so linking to this page would be something like http://host/edit?date=mmddyyyy
 - if not logged in redirect to login.html
 - view/edit mode because markdown
