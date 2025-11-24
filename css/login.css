@@ -1,3 +1,10 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
 body {
     display: flex;
     justify-content: center;
@@ -6,7 +13,7 @@ body {
     background: black;
 }
 
-.wrapper{
+.wrapper{ /* this applies to everything that's not the bg */
     width: 420px;
     background: transparent;
     border: 2px;
@@ -53,4 +60,18 @@ body {
     font-size: 16px;
     color: grey;
     font-weight: 600;
+    box-shadow: 4px 6px 0px rgba(0,0,0,0.35);
+
+}
+
+.wrapper .remember{
+    display: flex;
+    justify-content: space-between;
+    font-size: 14.5px;
+    margin: -15px 0 15px;
+}
+
+.remember label input{
+    accent-color: white;
+    margin-right: 3px;
 }

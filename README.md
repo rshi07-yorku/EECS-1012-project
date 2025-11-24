@@ -1,46 +1,63 @@
 # Password Protected Diary
 
-this is made by chatgpt as a template, we'll change it later
-
 A simple password-protected diary web app that allows users to view and add diary entries **only after authentication**. Diary contents are stored on the server, and the webpage hides all entries until the correct password is entered.
 
----
+## Pages
 
-## Features
+### index.html
+- should look something like google docs homepage list view
+- welcome div at the top maybe? something like "Welcome back (user)" with a button below that says create today's entry, which changes to edit today's entry if it already exists
+- 
+
+### login.html
+- login page, if logged in redirect to index.html
+
+### edit.html
+- uses [stackedit](https://github.com/benweet/stackedit?tab=readme-ov-file) for markdown editing
+- takes in a query (date), so linking to this page would be something like http://host/edit?date=mmddyyyy
+- if not logged in redirect to login.html
+- view/edit mode because markdown
+
+### calendar.html
+- calendar view
+- dates with entries look different (different shade maybe?)
+- when clicking on a box, if an entry exists, go to it, if not ask if user wants to create entry
+- idk if we want full create event calendar functionality, i might add it if i have extra time (yay scope creep)
+- redirect etc etc
+
+## Features (WIP)
+
+below is gpt'ed, make correct later 
 
 ### Password Authentication
 - Prompts the user for a password.
-- If the password is **correct**, all existing diary entries are displayed in the diary “display area”.
+- If the password is **correct**, all diary entries for that user are displayed in the diary “display area”.
 
 ### Add Diary Entries
 - Authenticated users can submit new diary entries.
 - New entries are saved on the server and immediately displayed.
 
-### Lock Button
-- Hides all diary information from the page.
-- Requires re-entering the password to unlock again.
 
 ### Server-Stored Entries
 - All notes are stored server-side so they persist across sessions.
 - Entries are only sent to the frontend after successful authentication.
 
----
+### Calendar View
+- show calendar, support creating 
 
-## Tech Stack (example)
+## Tech Stack
 
 - **Frontend:** HTML, CSS, JavaScript  
 - **Backend:** Node.js / Express (or any backend)  
-- **Storage:** JSON file or database
+- **Storage:** JSON for users, Markdown for entries
 
----
+## How It Works (WIP)
 
-## How It Works
-
+ignore below, this is gpt from earlier
 1. User visits the webpage.  
 2. A password input appears.  
 3. User submits password → sent to server for verification.  
 4. If correct:
-   - Server returns existing diary entries.
+   - Server gets user's diary entries.
    - “New Entry” form becomes available.
 5. User adds new entries → server saves them.
-6. User can press **Lock Diary** to hide all displayed entries.
