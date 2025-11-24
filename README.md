@@ -12,6 +12,9 @@ A simple password-protected diary web app that allows users to view and add diar
 ### login.html
 - login page, if logged in redirect to index.html
 
+### signup.html
+- signup page, if logged in redirect
+
 ### edit.html
 - uses [stackedit](https://github.com/benweet/stackedit?tab=readme-ov-file) for markdown editing
 - takes in a query (date), so linking to this page would be something like http://host/edit?date=mmddyyyy
