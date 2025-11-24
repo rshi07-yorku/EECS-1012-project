@@ -1,6 +1,38 @@
 # Password Protected Diary
 
-A simple password-protected diary web app that allows users to view and add diary entries **only after authentication**. Diary contents are stored on the server, and the webpage hides all entries until the correct password is entered.
+A simple password-protected diary web app that allows users to view and add diary entries **only after authentication**. Diary contents are stored on the server.
+
+GPT file structure idea
+```
+password-diary/
+│
+├── public/
+│   ├── index.html
+│   ├── login.html
+│   ├── signup.html
+│   ├── edit.html
+│   ├── calendar.html
+│   ├── css/
+│   │   ├── index.css
+│   │   ├── login.css
+│   │   ├── signup.css
+│   │   ├── edit.css
+│   │   └── calendar.css
+│   └── js/
+│       ├── global.js
+│       ├── index.js
+│       ├── login.js
+│       ├── signup.js
+│       ├── edit.js
+│       └── calendar.js
+│
+├── server.js
+├── package.json    # not too sure what this is ngl
+├── entries/        # stores markdown files
+│   └── user1/
+│       └── 11242025.md
+└── users.json      # stores username/password hash
+```
 
 ## Pages
 
@@ -49,7 +81,7 @@ below is partially gpt'ed, will correct later
 - Entries are only sent to the frontend after successful authentication.
 
 ### Calendar View
-- show calendar, support creating 
+- show calendar, support creating/viewing entries by clicking on a date 
 
 ## Tech Stack
 

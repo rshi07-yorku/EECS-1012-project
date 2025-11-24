@@ -3,7 +3,7 @@
 JavaScript files will be stored here
 
 
-# Files
+# Webpage Files
 
 1 js page per html for organization
 
@@ -35,7 +35,43 @@ stackedit i guess
 - check if username is in use
 - pw strength thing?
 
+## calendar
+- calendar functionality
+    - next month, previous month, year/month picker with dropdown menus perhaps
+- ask server if stuff exists on day
+
 ## idk where to put these, like all pages use them, maybe a global.js
 - toggle darkmode
 - get current user
 - there's definitely more that can apply to all that i'm forgetting
+
+# Server
+
+## server.js
+- login
+    - authenticate user
+    - create user
+- edit
+    - create files
+    - save edits (maybe i can implement autosave)
+- index
+    - get files for current user
+
+## database.json
+- save users like below
+```javascript
+{
+  "user1": {
+    "password": "user1",
+    "theme": "dark"
+  },
+  "user2": {
+    "password": "user2",
+    "theme": "light"
+  }
+}
+- maybe encrypt password if i have extra time 
+```
+
+## entries folder
+- stores .md files 
