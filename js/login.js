@@ -32,3 +32,8 @@ function light(){
     root.style.setProperty('--btn-text', '#eff1f5');
     root.style.setProperty('--shadow', 'rgba(0, 0, 0, 0.2)');
 }
+
+function loginQueries(user,password){
+    
+
+}
