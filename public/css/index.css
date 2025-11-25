@@ -39,7 +39,25 @@ body {
     color: var(--text-color);
 }
 
+.header {
+    display: flex;
+    height: 10%;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    border:rgba(0, 0, 0, 1) 2px solid;
+    background-color: var(--bg-color);
+    transition: all 0.8s ease;
+}
 
+.home{
+    position: relative;
+    width: 50px;
+    height: 50px;
+    left: 2%;
+}
 /* this is for fancy switch button*/
 
 body.no-animation, .no-animation * {
@@ -52,8 +70,7 @@ body.no-animation, .no-animation * {
     grid-template-columns: repeat(54, 1px);
     grid-template-rows: repeat(24, 1px);
     gap: 0;
-    position: absolute;
-    top: 30px;
+    position: relative;
     right: 30px;
     background-color: var(--day-bg-color);
     border-radius: 49px;

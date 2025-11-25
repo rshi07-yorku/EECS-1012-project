@@ -22,7 +22,8 @@ const themes = {
         '--link-color': '#89dceb',
         '--btn-color': '#74c7ec',
         '--btn-text': '#45475a',
-        '--shadow': 'rgba(0, 0, 0, 0.53)'
+        '--shadow': 'rgba(0, 0, 0, 0.53)',
+        '--code-color': '#11111b'
     },
     light: {
         '--text-color': '#4c4f69',
@@ -30,7 +31,8 @@ const themes = {
         '--link-color': '#04a5e5',
         '--btn-color': '#209fb5',
         '--btn-text': '#eff1f5',
-        '--shadow': 'rgba(0, 0, 0, 0.2)'
+        '--shadow': 'rgba(0, 0, 0, 0.2)',
+        '--code-color': '#dce0e8'
     }
 };
 

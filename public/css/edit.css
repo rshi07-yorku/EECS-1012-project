@@ -20,6 +20,7 @@
     --btn-color: #209fb5;
     --btn-text: #eff1f5;
     --shadow: rgba(0, 0, 0, 0.2);
+    --code-color: #dce0e8;
 }
 
 body {
@@ -135,8 +136,8 @@ pre, code {
 font-family: 'Fira Code', 'JetBrains Mono', monospace;
 font-size: 0.95rem;
 line-height: 1.5;
-background-color: #11111b; /* Mocha background */
-color: var(--text-color); /* Text color */
+background-color: var(--code-color); 
+color: var(--text-color); 
 padding: 0.4em 0.6em;
 border-radius: 8px;
 overflow-x: auto;
