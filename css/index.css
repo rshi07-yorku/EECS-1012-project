@@ -234,3 +234,44 @@ a {
 a:hover {
     color: #66a4af;
 }
+
+:root {
+
+    /* colours for switch*/
+    --bg-color-light: #eff1f5;
+    --bg-color-dark: #1e1e2e;
+    --border-color-light: #4c4f69;
+    --border-color-dark: #a6adc8;
+    --sun-color: #df8e1d;
+    --moon-color: #cdd6f4;
+    --day-bg-color: #04a5e5;
+    --night-bg-color: #313244;
+    --cloud-color: #eff1f5;
+    --star-color: #cdd6f4;
+
+    /* colours for enabling light/dark*/
+    --text-color: #4c4f69;
+    --bg-color: #eff1f5;
+    --link-color: #04a5e5;
+    --btn-color: #209fb5;
+    --btn-text: #eff1f5;
+    --shadow: rgba(0, 0, 0, 0.2);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    transition: background-color 0.8s ease;
+    color: var(--text-color);
+}
