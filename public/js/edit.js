@@ -1,4 +1,5 @@
 
+// render as you write
 const textarea = document.getElementById('test');
 const output = document.getElementById('output');
 

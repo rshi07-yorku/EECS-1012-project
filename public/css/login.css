@@ -257,6 +257,7 @@ body {
     font-weight: 600;
     color: var(--btn-text);
     border: none;
+    transition: all 0.35s ease;
 }
 
 .wrapper .btn:hover {

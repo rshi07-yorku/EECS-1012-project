@@ -1,3 +1,52 @@
+:root {
+
+    /* colours for switch*/
+    --bg-color-light: #eff1f5;
+    --bg-color-dark: #1e1e2e;
+    --border-color-light: #4c4f69;
+    --border-color-dark: #a6adc8;
+    --sun-color: #df8e1d;
+    --moon-color: #cdd6f4;
+    --day-bg-color: #04a5e5;
+    --night-bg-color: #313244;
+    --cloud-color: #eff1f5;
+    --star-color: #cdd6f4;
+
+    /* colours for enabling light/dark*/
+    --text-color: #4c4f69;
+    --bg-color: #eff1f5;
+    --link-color: #04a5e5;
+    --btn-color: #209fb5;
+    --btn-text: #eff1f5;
+    --shadow: rgba(0, 0, 0, 0.2);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    transition: background 0.8s ease;
+    color: var(--text-color);
+}
+
+
+/* this is for fancy switch button*/
+
+body.no-animation, .no-animation * {
+    transition: none !important;
+    animation: none !important;
+}
+
 .theme-switcher-grid {
     display: grid;
     grid-template-columns: repeat(54, 1px);
@@ -149,129 +198,4 @@
     opacity: 1;
 }
 
-.wrapper {
-    /* this applies to everything that's not the bg */
-    width: 420px;
-    background: transparent;
-    border: 2px;
-    color: var(--text-color);
-    border-radius: 10px;
-    padding: 30px 40px;
-    transition: color 0.8s ease, background 0.8s ease;
-}
-
-.wrapper h1 {
-    font-size: 36px;
-    text-align: center;
-}
-
-.wrapper .input-box {
-    position: relative;
-    width: 100%;
-    height: 50px;
-    margin: 30px 0;
-}
-
-.input-box input {
-    width: 100%;
-    height: 100%;
-    background: transparent;
-    border: 2px solid var(--text-color);
-    color: var(--text-color);
-    border-radius: 40px;
-    font-size: 16px;
-    padding: 20px 45px 20px 20px;
-    transition: transform 0.35s ease, box-shadow 0.35s ease;
-}
-
-
-.input-box input:focus {
-    outline: none;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px 0 var(--shadow), 0 6px 20px 0 var(--shadow);
-
-}
-
-::placeholder{
-    color: var(--text-color);
-}
-
-.wrapper .btn {
-    width: 100%;
-    height: 45px;
-    background: var(--btn-color);
-    outline: none;
-    border-radius: 40px;
-    font-size: 16px;
-    font-weight: 600;
-    color: var(--btn-text);
-    transition: transform 0.35s ease, box-shadow 0.35s ease;
-    border: none;
-}
-
-.wrapper .btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 16px 0 var(--shadow), 0 12px 40px 0 var(--shadow);
-}
-
-
-.wrapper .remember {
-    display: flex;
-    justify-content: space-between;
-    font-size: 14.5px;
-    margin: -15px 0 15px;
-    color: var(--text-color);
-}
-
-.remember label input {
-    accent-color: #cdd6f4;
-    margin-right: 3px;
-}
-
-a {
-    color: var(--link-color);
-}
-a:hover {
-    color: #66a4af;
-}
-
-:root {
-
-    /* colours for switch*/
-    --bg-color-light: #eff1f5;
-    --bg-color-dark: #1e1e2e;
-    --border-color-light: #4c4f69;
-    --border-color-dark: #a6adc8;
-    --sun-color: #df8e1d;
-    --moon-color: #cdd6f4;
-    --day-bg-color: #04a5e5;
-    --night-bg-color: #313244;
-    --cloud-color: #eff1f5;
-    --star-color: #cdd6f4;
-
-    /* colours for enabling light/dark*/
-    --text-color: #4c4f69;
-    --bg-color: #eff1f5;
-    --link-color: #04a5e5;
-    --btn-color: #209fb5;
-    --btn-text: #eff1f5;
-    --shadow: rgba(0, 0, 0, 0.2);
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-}
-
-body {
-    background-color: var(--bg-color);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    margin: 0;
-    transition: background-color 0.8s ease;
-    color: var(--text-color);
-}
+/* this is the end of switch button*/
