@@ -21,6 +21,8 @@
     --shadow: rgba(0, 0, 0, 0.2);
 }
 
+/* this is for fancy switch button*/
+
 body.no-animation, .no-animation * {
     transition: none !important;
     animation: none !important;
@@ -194,6 +196,9 @@ body {
 .theme-switcher-grid.night-theme #star4 {
     opacity: 1;
 }
+
+/* this is the end of switch button*/
+
 
 .wrapper {
     /* this applies to everything that's not the bg */
