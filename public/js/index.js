@@ -1,4 +1,27 @@
+// collapsible parition?
+
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    document.body.classList.remove("no-animation");
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    console.log(content)
+    if (content.style.maxHeight){
+      content.style.maxHeight = null;
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+    }
+  });
+}
+
+
+
 //theme switcher
+
+//inital setup
 const root = document.querySelector(":root");
 document.body.classList.add("no-animation");
 
@@ -9,6 +32,7 @@ const themes = {
         '--link-color': '#89dceb',
         '--btn-color': '#74c7ec',
         '--btn-text': '#45475a',
+        '--coll-color': '#313244',
         '--shadow': 'rgba(0, 0, 0, 0.53)'
     },
     light: {
@@ -17,6 +41,7 @@ const themes = {
         '--link-color': '#04a5e5',
         '--btn-color': '#209fb5',
         '--btn-text': '#eff1f5',
+        '--coll-color': '#ccd0da',
         '--shadow': 'rgba(0, 0, 0, 0.2)'
     }
 };
@@ -27,7 +52,6 @@ function setTheme(theme) {
         root.style.setProperty(prop, value);
     });
 }
-
 document
     .getElementById("theme-switcher-grid")
     .addEventListener("click", function () {
@@ -44,6 +68,7 @@ document
 
     });
 
+// persistence
 const savedTheme = localStorage.getItem("theme");
 
 if (savedTheme === "dark") {

@@ -15,6 +15,7 @@
     /* colours for enabling light/dark*/
     --text-color: #4c4f69;
     --bg-color: #eff1f5;
+    --coll-color: #ccd0da;
     --link-color: #04a5e5;
     --btn-color: #209fb5;
     --btn-text: #eff1f5;
@@ -30,15 +31,16 @@
 
 body {
     background-color: var(--bg-color);
-    display: flex;
+    position: static;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     margin: 0;
-    transition: background 0.8s ease;
+    transition: all 0.8s ease;
     color: var(--text-color);
 }
 
+/* header*/
 .header {
     display: flex;
     height: 10%;
@@ -47,20 +49,55 @@ body {
     align-items: center;
     position: fixed;
     top: 0;
-    border:rgba(0, 0, 0, 1) 2px solid;
+    border: rgba(0, 0, 0, 1) 2px solid;
     background-color: var(--bg-color);
     transition: all 0.8s ease;
 }
+.not-header{
+    padding-top:7%;
+}
 
-.home{
+.home {
     position: relative;
     width: 50px;
     height: 50px;
     left: 2%;
 }
+
+/* collapsible part */
+.collapsible {
+    background-color: var(--btn-color);
+    color: var(--btn-text);
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+}
+
+.active,
+.collapsible:hover {
+    background-color: #94e2d5c0;
+}
+
+.file-list {
+    position: static;
+    padding: 0px 18px;
+    overflow: hidden;
+    background-color: var(--coll-color);
+    max-height: 0;
+    transition: max-height 0.2s ease-out, background-color 0.8s ease, color 0.8s ease;
+}
+div.file-list * {
+    padding: 20px;
+}
+
 /* this is for fancy switch button*/
 
-body.no-animation, .no-animation * {
+body.no-animation,
+.no-animation * {
     transition: none !important;
     animation: none !important;
 }
