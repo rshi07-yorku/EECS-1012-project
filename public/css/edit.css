@@ -21,6 +21,147 @@
     --btn-text: #eff1f5;
     --shadow: rgba(0, 0, 0, 0.2);
 }
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: left;
+    min-height: 100vh;
+    background: var(--bg-color);
+    color: var(--text-color);
+    word-wrap: break-word;
+    transition: all 0.8s ease;
+}
+.header {
+    display: flex;
+    height: 10%;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    border:rgba(0, 0, 0, 1) 2px solid;
+    background-color: var(--bg-color);
+}
+
+.home{
+    position: relative;
+    width: 50px;
+    height: 50px;
+    left: 2%;
+}
+
+.container{
+    width: 100%;
+    height:auto;
+    padding-top: 5%;
+    display: flex;
+    border:rgba(0, 0, 0, 1) 2px solid;
+
+}
+.major {
+    height: 100%;
+    width: 50%;
+    justify-content: left;
+    align-items: center;
+    display: flex;
+}
+
+#output {
+    display: inline;
+    padding: 10px;
+    align-items: center;
+    line-height: 2;
+}
+
+.split {
+    position: fixed;
+    align-self: center;
+    height: 100vh;
+    width: 2px;
+    background-color: black;
+}
+
+textarea {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    width: 95%;
+    height: 95%;
+    border: none;
+    margin: auto;
+    resize: none;
+    transition: all 0.8s ease;
+}
+
+textarea:focus {
+    outline: none;
+    outline-offset: 5px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 25px 1px rgba(0,0,0,0.35);
+
+}
+
+
+.btn {
+    position: fixed;
+    bottom: 5%;
+    /* slightly above footer */
+    right: 3%;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    background-color: var(--btn-color);
+    color: var(--btn-text);
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.edit-btn:hover {
+    background-color: #94e2d5c0;
+}
+
+ul, ol, li {
+    margin: 0.2em 0;
+    padding-left: 20px;
+}
+
+pre, code {
+font-family: 'Fira Code', 'JetBrains Mono', monospace;
+font-size: 0.95rem;
+line-height: 1.5;
+background-color: #11111b; /* Mocha background */
+color: var(--text-color); /* Text color */
+padding: 0.4em 0.6em;
+border-radius: 8px;
+overflow-x: auto;
+tab-size: 4;
+}
+
+
+/* <pre> specific tweaks */
+pre {
+padding: 1em;
+margin: 1em 0;
+background-color: #11111b;
+}
+a:link{
+    color: #89b4fa;
+}
+a:hover{
+    color: #89b4fac2;
+}
+a {
+    color: var(--link-color);
+}
+a:hover {
+    color: #66a4af;
+}
+
 /* this is for fancy switch button*/
 
 body.no-animation, .no-animation * {
@@ -39,8 +180,7 @@ body.no-animation, .no-animation * {
     grid-template-columns: repeat(54, 1px);
     grid-template-rows: repeat(24, 1px);
     gap: 0;
-    position: absolute;
-    top: 30px;
+    position: relative;
     right: 30px;
     background-color: var(--day-bg-color);
     border-radius: 49px;
@@ -186,116 +326,3 @@ body.no-animation, .no-animation * {
 }
 
 /* this is the end of switch button*/
-
-body {
-    display: flex;
-    justify-content: center;
-    align-items: left;
-    min-height: 100vh;
-    background: var(--bg-color);
-    color: var(--text-color);
-    word-wrap: break-word;
-    transition: all 0.8s ease;
-}
-
-.major {
-    height: 100vh;
-    width: 50%;
-    justify-content: left;
-    align-items: center;
-    display: flex;
-}
-
-#output {
-    display: inline;
-    padding: 10px;
-    align-items: center;
-    line-height: 2;
-}
-
-.split {
-    position: fixed;
-    align-self: center;
-    height: 100vh;
-    width: 2px;
-    background-color: black;
-}
-
-textarea {
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    width: 95%;
-    height: 95%;
-    border: none;
-    margin: auto;
-    resize: none;
-    transition: all 0.8s ease;
-}
-
-textarea:focus {
-    outline: none;
-    outline-offset: 5px;
-    border-radius: 20px;
-    box-shadow: 0px 0px 25px 1px rgba(0,0,0,0.35);
-
-}
-
-
-.btn {
-    position: fixed;
-    bottom: 5%;
-    /* slightly above footer */
-    right: 3%;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    border: none;
-    background-color: #94e2d5;
-    font-size: 20px;
-    cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.edit-btn:hover {
-    background-color: #94e2d5c0;
-}
-
-ul, ol, li {
-    margin: 0.2em 0;
-    padding-left: 20px;
-}
-
-pre, code {
-font-family: 'Fira Code', 'JetBrains Mono', monospace;
-font-size: 0.95rem;
-line-height: 1.5;
-background-color: #11111b; /* Mocha background */
-color: var(--text-color); /* Text color */
-padding: 0.4em 0.6em;
-border-radius: 8px;
-overflow-x: auto;
-tab-size: 4;
-}
-
-
-/* <pre> specific tweaks */
-pre {
-padding: 1em;
-margin: 1em 0;
-background-color: #11111b;
-}
-a:link{
-    color: #89b4fa;
-}
-a:hover{
-    color: #89b4fac2;
-}
-a {
-    color: var(--link-color);
-}
-a:hover {
-    color: #66a4af;
-}
