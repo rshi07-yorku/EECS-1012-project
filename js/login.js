@@ -54,4 +54,3 @@ if (savedTheme === "dark") {
     document.getElementById("theme-switcher-grid").classList.remove("night-theme");
 }
 
-
