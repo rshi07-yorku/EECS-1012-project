@@ -1,6 +1,8 @@
 {
-  "users": [
-    { "username": "testuser", "password": "1234" }
-  ],
-  "entries": []
+  "guest": {
+    "password": "guest"
+  },
+  "guest2": {
+    "password": "guest2"
+  }
 }

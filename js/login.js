@@ -1,39 +1,56 @@
 
-const root=document.querySelector(":root");
+const root = document.querySelector(":root");
+
+
+const themes = {
+    dark: {
+        '--text-color': '#cdd6f4',
+        '--bg-color': '#1e1e2e',
+        '--link-color': '#89dceb',
+        '--btn-color': '#74c7ec',
+        '--btn-text': '#45475a',
+        '--shadow': 'rgba(0, 0, 0, 0.53)'
+    },
+    light: {
+        '--text-color': '#4c4f69',
+        '--bg-color': '#eff1f5',
+        '--link-color': '#04a5e5',
+        '--btn-color': '#209fb5',
+        '--btn-text': '#eff1f5',
+        '--shadow': 'rgba(0, 0, 0, 0.2)'
+    }
+};
+
+function setTheme(theme) {
+
+    Object.entries(themes[theme]).forEach(([prop, value]) => {
+        root.style.setProperty(prop, value);
+    });
+}
 
 document
     .getElementById("theme-switcher-grid")
     .addEventListener("click", function () {
+        document.body.classList.remove("no-animation");
         this.classList.toggle("night-theme");
-        if (this.classList.contains("night-theme")){
-            dark();
+        if (this.classList.contains("night-theme")) {
+            setTheme('dark');
+            localStorage.setItem("theme", "dark");
         }
-        else{
-            light();
+        else {
+            setTheme('light');
+            localStorage.setItem("theme", "light");
         }
 
     });
 
-function dark(){
-    root.style.setProperty('--text-color', '#cdd6f4');
-    root.style.setProperty('--bg-color', '#1e1e2e');
-    root.style.setProperty('--link-color', '#89dceb');
-    root.style.setProperty('--btn-color', '#74c7ec');
-    root.style.setProperty('--btn-text', '#45475a');
-    root.style.setProperty('--shadow', 'rgba(0, 0, 0, 0.53)');
+const savedTheme = localStorage.getItem("theme");
 
+if (savedTheme === "dark") {
+    setTheme('dark');
+    document.getElementById("theme-switcher-grid").classList.add("night-theme");
+} else {
+    setTheme('light');
+    document.getElementById("theme-switcher-grid").classList.remove("night-theme");
 }
 
-function light(){
-    root.style.setProperty('--text-color', '#4c4f69');
-    root.style.setProperty('--bg-color', '#eff1f5');
-    root.style.setProperty('--link-color', '#04a5e5');
-    root.style.setProperty('--btn-color', '#209fb5');
-    root.style.setProperty('--btn-text', '#eff1f5');
-    root.style.setProperty('--shadow', 'rgba(0, 0, 0, 0.2)');
-}
-
-function loginQueries(user,password){
-    
-
-}
