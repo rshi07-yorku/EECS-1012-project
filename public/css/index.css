@@ -18,8 +18,11 @@
     --coll-color: #ccd0da;
     --link-color: #04a5e5;
     --btn-color: #209fb5;
+    --btn-hover: #04a5e5;
     --btn-text: #eff1f5;
     --shadow: rgba(0, 0, 0, 0.2);
+    --header-color: #e6e9ef;
+
 }
 
 * {
@@ -49,8 +52,7 @@ body {
     align-items: center;
     position: fixed;
     top: 0;
-    border: rgba(0, 0, 0, 1) 2px solid;
-    background-color: var(--bg-color);
+    background-color: var(--header-color);
     transition: all 0.8s ease;
 }
 .not-header{
@@ -79,7 +81,7 @@ body {
 
 .active,
 .collapsible:hover {
-    background-color: #94e2d5c0;
+    background-color: var(--btn-hover);
 }
 
 .file-list {

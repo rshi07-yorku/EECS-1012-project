@@ -18,9 +18,10 @@
     --bg-color: #eff1f5;
     --link-color: #04a5e5;
     --btn-color: #209fb5;
+    --btn-hover: #04a5e5;
     --btn-text: #eff1f5;
     --shadow: rgba(0, 0, 0, 0.2);
-    --code-color: #dce0e8;
+    --header-color: #e6e9ef;
 }
 
 body {
@@ -41,8 +42,7 @@ body {
     align-items: center;
     position: fixed;
     top: 0;
-    border:rgba(0, 0, 0, 1) 2px solid;
-    background-color: var(--bg-color);
+    background-color: var(--header-color);
     transition: all 0.8s ease;
 }
 
@@ -58,8 +58,6 @@ body {
     height:auto;
     padding-top: 5%;
     display: flex;
-    border:rgba(0, 0, 0, 1) 2px solid;
-
 }
 .major {
     height: 100%;
@@ -124,7 +122,7 @@ textarea:focus {
 }
 
 .edit-btn:hover {
-    background-color: #94e2d5c0;
+    background-color: var(--btn-hover);
 }
 
 ul, ol, li {
@@ -136,7 +134,7 @@ pre, code {
 font-family: 'Fira Code', 'JetBrains Mono', monospace;
 font-size: 0.95rem;
 line-height: 1.5;
-background-color: var(--code-color); 
+background-color: var(--header-color); 
 color: var(--text-color); 
 padding: 0.4em 0.6em;
 border-radius: 8px;

@@ -29,8 +29,10 @@ const themes = {
     dark: {
         '--text-color': '#cdd6f4',
         '--bg-color': '#1e1e2e',
+        '--header-color': '#181825',
         '--link-color': '#89dceb',
         '--btn-color': '#74c7ec',
+        '--btn-hover': '#89dceb',
         '--btn-text': '#45475a',
         '--coll-color': '#313244',
         '--shadow': 'rgba(0, 0, 0, 0.53)'
@@ -38,8 +40,10 @@ const themes = {
     light: {
         '--text-color': '#4c4f69',
         '--bg-color': '#eff1f5',
+        '--header-color': '#e6e9ef',
         '--link-color': '#04a5e5',
         '--btn-color': '#209fb5',
+        '--btn-hover': '#04a5e5',
         '--btn-text': '#eff1f5',
         '--coll-color': '#ccd0da',
         '--shadow': 'rgba(0, 0, 0, 0.2)'
