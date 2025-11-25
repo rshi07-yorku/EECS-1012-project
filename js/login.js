@@ -1,6 +1,7 @@
 
+//theme switcher
 const root = document.querySelector(":root");
-
+document.body.classList.remove("no-animation");
 
 const themes = {
     dark: {

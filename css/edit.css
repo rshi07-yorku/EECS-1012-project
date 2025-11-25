@@ -21,7 +21,12 @@
     --btn-text: #eff1f5;
     --shadow: rgba(0, 0, 0, 0.2);
 }
+/* this is for fancy switch button*/
 
+body.no-animation, .no-animation * {
+    transition: none !important;
+    animation: none !important;
+}
 * {
     margin: 0;
     padding: 0;
@@ -179,6 +184,8 @@
 .theme-switcher-grid.night-theme #star4 {
     opacity: 1;
 }
+
+/* this is the end of switch button*/
 
 body {
     display: flex;
