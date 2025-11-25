@@ -104,5 +104,5 @@ ignore below, this is gpt from earlier
 
 # What else we have left on the frontend
 - On homepage we create drop down menu for all of the users diaries that calls on the dates the diaries were made
-- ~On edit page we implment calendar.html and include a link to the html file as well* No Calendar~
+- ~On edit page we implment calendar.html and include a link to the html file as well* No Calendar*~
 -
