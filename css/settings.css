@@ -28,7 +28,7 @@ body {
 .return {
     position: fixed;
     bottom: 20px;
-    right: 20px;
+    left: 20px;
     color: black;
     font-size: 28px;
     font-weight: bold;
