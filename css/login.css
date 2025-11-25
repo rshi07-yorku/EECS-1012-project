@@ -21,6 +21,11 @@
     --shadow: rgba(0, 0, 0, 0.2);
 }
 
+body.no-animation, .no-animation * {
+    transition: none !important;
+    animation: none !important;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -35,7 +40,7 @@ body {
     align-items: center;
     min-height: 100vh;
     margin: 0;
-    transition: background-color 0.8s ease;
+    transition: background 0.8s ease;
     color: var(--text-color);
 }
 
@@ -198,7 +203,7 @@ body {
     color: var(--text-color);
     border-radius: 10px;
     padding: 30px 40px;
-    transition: color 0.8s ease, background 0.8s ease;
+    transition: all 0.8s ease;
 }
 
 .wrapper h1 {
@@ -222,7 +227,7 @@ body {
     border-radius: 40px;
     font-size: 16px;
     padding: 20px 45px 20px 20px;
-    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    transition: all 0.35s ease;
 }
 
 
@@ -246,7 +251,6 @@ body {
     font-size: 16px;
     font-weight: 600;
     color: var(--btn-text);
-    transition: transform 0.35s ease, box-shadow 0.35s ease;
     border: none;
 }
 
