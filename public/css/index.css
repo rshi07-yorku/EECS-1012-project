@@ -45,18 +45,34 @@ body {
 
 /* header*/
 .header {
-    display: flex;
+    display: static;
     height: 10%;
     width: 100%;
-    justify-content: space-between;
     align-items: center;
+    padding: 20px 10px;
     position: fixed;
     top: 0;
     background-color: var(--header-color);
     transition: all 0.8s ease;
+    border: #04a5e5 1px solid;
 }
-.not-header{
-    padding-top:7%;
+
+.header-right {
+    float: right;
+}
+
+.btn{
+    padding: 6px;
+    margin-right: 25px;
+    color: var(--btn-text);
+    background: var(--btn-color);
+    border-radius: 10px;
+}
+
+
+
+.not-header {
+    padding-top: 7%;
 }
 
 .home {
@@ -92,6 +108,7 @@ body {
     max-height: 0;
     transition: max-height 0.2s ease-out, background-color 0.8s ease, color 0.8s ease;
 }
+
 div.file-list * {
     padding: 20px;
 }
