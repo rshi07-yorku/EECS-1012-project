@@ -10,6 +10,24 @@ function render() {
 textarea.addEventListener('input', render);
 render();
 
+// Auto-save every 30 seconds
+
+setInterval(() => {
+    const content = textarea.value;
+
+    fetch('http://localhost:3000/save', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ filename: 'entries/banana.md', content }) //this should be {date}/{user}/banana.md
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Auto-saved:', data);
+    })
+    .catch(err => console.error('Save failed:', err));
+}, 5000); 
 
 //theme switcher
 const root = document.querySelector(":root");
