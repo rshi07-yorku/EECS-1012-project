@@ -3,26 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <title>Sign In - Diary</title>
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link rel="stylesheet" href="css/loginDavid.css">
+    <link rel="stylesheet" href="css/signup.css">
 </head>
 <body>
+    <div class="wrapper">
+        <form id="loginForm">
+            <h1>Sign In</h1>
 
-    <div class="login-box">
-        <h1>Welcome</h1>
+            <div class="input-box">
+                <input type="text" id="username" placeholder="Username" required>
+            </div>
 
-        <label>Username:</label>
-        <input type="text" id="username">
+            <div class="input-box">
+                <input type="password" id="password" placeholder="Password" required>
+            </div>
 
-        <label>Password:</label>
-        <input type="password" id="password">
+            <div class="remember">
+                <label><input type="checkbox"> Remember me</label>
+                <a href="signup.html">No account? Sign up</a>
+            </div>
 
-        <button id="loginBtn">Login</button>
-
-        <p id="error" class="error"></p>
+            <button type="button" class="btn" id="loginBtn">Login</button>
+            
+            <p id="error" style="color: var(--text-color); margin-top: 10px; text-align: center;"></p>
+        </form>
     </div>
 
-    <script src="login.js"></script>
+    <button type="button" class="theme-switcher-grid" id="theme-switcher-grid" aria-label="Switch theme">
+        <div class="sun" id="sun" aria-hidden="true"></div>
+        <div class="moon-overlay" id="moon-overlay" aria-hidden="true"></div>
+        <div class="cloud-ball cloud-ball-left" id="ball1" aria-hidden="true"></div>
+        <div class="cloud-ball cloud-ball-middle" id="ball2" aria-hidden="true"></div>
+        <div class="cloud-ball cloud-ball-right" id="ball3" aria-hidden="true"></div>
+        <div class="cloud-ball cloud-ball-top" id="ball4" aria-hidden="true"></div>
+        <div class="star" id="star1" aria-hidden="true"></div>
+        <div class="star" id="star2" aria-hidden="true"></div>
+        <div class="star" id="star3" aria-hidden="true"></div>
+        <div class="star" id="star4" aria-hidden="true"></div>
+    </button>
+
+    <script src="js/login.js"></script>
 </body>
 </html>
