@@ -1,5 +1,5 @@
 let user = "";
-const date = "";
+let title = "";
 
 
 // check user
@@ -41,7 +41,7 @@ setInterval(() => {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ filename: 'banana.md', content }) //this should be {date}/{user}/banana.md
+        body: JSON.stringify({ filename: title, content })
     })
         .then(response => response.json())
         .then(data => {

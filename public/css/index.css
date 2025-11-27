@@ -54,7 +54,6 @@ body {
     top: 0;
     background-color: var(--header-color);
     transition: all 0.8s ease;
-    border: #04a5e5 1px solid;
 }
 
 .header-right {
