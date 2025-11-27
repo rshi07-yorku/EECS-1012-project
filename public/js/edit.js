@@ -1,3 +1,14 @@
+// login redirect
+fetch('/me', {
+    method: 'GET',
+    credentials: 'include' 
+})
+.then(res => res.json())
+.then(data => {
+    if (!data.loggedIn) {
+        window.location.href = "login.html";
+    }
+});
 
 // render as you write
 const textarea = document.getElementById('test');

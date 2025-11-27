@@ -61,7 +61,7 @@ body {
     float: right;
 }
 
-.btn{
+.header-btn{
     padding: 6px;
     margin-right: 25px;
     color: var(--btn-text);

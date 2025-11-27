@@ -1,7 +1,50 @@
+// check if logged in
+fetch('/me', {
+    method: 'GET',
+    credentials: 'include' 
+})
+.then(res => res.json())
+.then(data => {
+    if (data.loggedIn) {
+        window.location.href = "index.html";
+    }
+});
+
+// login
+document.getElementById('login').addEventListener('submit', async (e) => {
+    e.preventDefault(); // prevent page reload
+
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+    const errorDiv = document.getElementById('error');
+
+    try {
+        console.log(JSON.stringify({ username, password }));
+        const res = await fetch('http://localhost:3000/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username, password })
+        });
+
+        const data = await res.json();
+
+        if (res.ok) {
+            errorDiv.textContent = ""; // clear error
+            alert(`Logged in as ${data.username}`);
+            window.location.href = "index.html";
+        } else {
+            // login failed
+            errorDiv.textContent = data.error; // show error message
+        }
+    } catch (err) {
+        errorDiv.textContent = "Server error. Try again later.";
+        console.error(err);
+    }
+});
 
 //theme switcher
 const root = document.querySelector(":root");
-document.body.classList.remove("no-animation");
+document.body.classList.add("no-animation");
 
 const themes = {
     dark: {

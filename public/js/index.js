@@ -1,20 +1,50 @@
-// collapsible parition?
+// login redirect
+fetch('/me', {
+    method: 'GET',
+    credentials: 'include' 
+})
+.then(res => res.json())
+.then(data => {
+    if (!data.loggedIn) {
+        window.location.href = "login.html";
+    }
+});
 
+// logout button
+document.getElementById('logout').addEventListener('click', async (e) => {
+    try {
+        const res = await fetch('http://localhost:3000/logout', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            credentials: 'include' // important if using sessions/cookies
+        });
+        if (res.ok) {
+            // Redirect to login page after successful logout
+            window.location.href = "login.html";
+        } else {
+            console.error('Logout failed');
+        }
+    } catch (err) {
+        console.error('Error:', err);
+    }
+});
+
+// collapsible parition?
 var coll = document.getElementsByClassName("collapsible");
 var i;
 
 for (i = 0; i < coll.length; i++) {
-  coll[i].addEventListener("click", function() {
-    document.body.classList.remove("no-animation");
-    this.classList.toggle("active");
-    var content = this.nextElementSibling;
-    console.log(content)
-    if (content.style.maxHeight){
-      content.style.maxHeight = null;
-    } else {
-      content.style.maxHeight = content.scrollHeight + "px";
-    }
-  });
+    coll[i].addEventListener("click", function () {
+        document.body.classList.remove("no-animation");
+        this.classList.toggle("active");
+        var content = this.nextElementSibling;
+        console.log(content)
+        if (content.style.maxHeight) {
+            content.style.maxHeight = null;
+        } else {
+            content.style.maxHeight = content.scrollHeight + "px";
+        }
+    });
 }
 
 
