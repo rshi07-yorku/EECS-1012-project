@@ -46,15 +46,31 @@ app.post('/api/logout', (req, res) => {
 
 // for /signup
 // signup
-app.post('/api/signup-server', async (req, res) => {
+app.post('/api/signup', async (req, res) => {
     const { username, password } = req.body;
 
-    const user = users[username];
-    if (!user || user.password !== password) {
-        return res.status(400).json({ error: "Invalid username or password" });
+    //Check if user already exists
+    if (users[username]) {
+        return res.status(409).json({ error: "User already exists" });
     }
-    req.session.username = username;
-    res.json({ message: "Logged in", username });
+
+    //Create the user in memory
+    users[username] = { password: password };
+
+    //Save to database.json
+    fs.writeFile('./database.json', JSON.stringify(users, null, 2), (err) => {
+        if (err) return res.status(500).json({ error: "Could not save user" });
+        
+        //Create the user's folder for entries
+        const userDir = path.join(__dirname, 'entries', username);
+        if (!fs.existsSync(userDir)){
+            fs.mkdirSync(userDir, { recursive: true });
+        }
+
+        // 5. Log them in automatically
+        req.session.username = username;
+        res.json({ message: "User created and logged in", username });
+    });
 });
 
 

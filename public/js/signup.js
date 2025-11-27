@@ -59,7 +59,6 @@ document.getElementById("signupBtn").addEventListener("click", function() {
     const passwordInput = document.getElementById("password").value;
     const messageBox = document.getElementById("message");
 
-    // basic validation
     if(!usernameInput || !passwordInput) {
         messageBox.style.color = "red";
         messageBox.innerText = "Please fill in all fields.";
@@ -69,8 +68,8 @@ document.getElementById("signupBtn").addEventListener("click", function() {
     messageBox.style.color = "var(--text-color)";
     messageBox.innerText = "Creating account...";
 
-    // hit the signup endpoint
-    fetch("http://localhost:3000/signup", {
+    // sending to backend
+    fetch("http://localhost:3000/api/signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username: usernameInput, password: passwordInput })
@@ -85,7 +84,6 @@ document.getElementById("signupBtn").addEventListener("click", function() {
         return response.json();
     })
     .then(data => {
-        // success, redirect to login
         messageBox.style.color = "#04a5e5"; 
         messageBox.innerText = "Account created! Redirecting...";
         
