@@ -4,5 +4,8 @@
   },
   "guest2": {
     "password": "guest2"
+  },
+  "test": {
+    "password": "test"
   }
 }

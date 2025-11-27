@@ -1,3 +1,9 @@
+# RUN SERVER BEFORE TESTING
+
+In terminal type
+`node server.js`
+test stuff at http://localhost:3000
+
 # Password Protected Diary
 
 A simple password-protected diary web app that allows users to view and add diary entries **only after authentication**. Diary contents are stored on the server.
