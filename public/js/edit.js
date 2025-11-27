@@ -1,4 +1,4 @@
-const user = "";
+let user = "";
 const date = "";
 
 
@@ -18,7 +18,6 @@ async function checkUser() {
     }
 }
 checkUser();
-
 
 
 // render as you write
@@ -42,7 +41,7 @@ setInterval(() => {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ filename: 'entries/banana.md', content }) //this should be {date}/{user}/banana.md
+        body: JSON.stringify({ filename: 'banana.md', content }) //this should be {date}/{user}/banana.md
     })
         .then(response => response.json())
         .then(data => {

@@ -1,4 +1,6 @@
-const user = "";
+let user = "";
+const today = new Date();
+const newEntry = "" + (today.getMonth() + 1) + today.getDate() + today.getFullYear();
 
 // check user
 async function checkUser() {
@@ -17,10 +19,46 @@ async function checkUser() {
 }
 checkUser();
 
-
-checkSession();
-
 // get md for user
+async function getEntries() {
+    try {
+        const res = await fetch('/api/entries', { credentials: 'include' });
+        
+        // First, check if the response is ok
+        if (!res.ok) {
+            throw new Error(`HTTP error! status: ${res.status}`);
+        }
+        
+        // Parse as JSON, not call .files()
+        const data = await res.json();
+        
+        if (!data.success) {
+            throw new Error(data.error || 'Failed to fetch entries');
+        }
+        
+        const files = data.files;
+        let html = ""; // Use let instead of const since we reassign it
+        
+        if (files.length === 0) {
+            document.getElementById('file-list').innerHTML = "<h1>No entries, create one for today!</h1>";
+        } else {
+            html = files.map(file => `<li>${file}</li>`).join('');
+            document.getElementById('file-list').innerHTML = `<h1>${html}</h1>`; // Wrap in <ul>
+        }
+
+    } catch (err) {
+        console.error("Error fetching entries:", err);
+        // Only redirect if it's an authentication error
+        if (err.message.includes('401') || err.message.includes('Not logged in')) {
+            window.location.href = "login.html";
+        } else {
+            // Show error to user
+            document.getElementById('file-list').innerHTML = `<p>Error loading entries: ${err.message}</p>`;
+        }
+    }
+}
+
+getEntries();
 
 // logout button
 document.getElementById('logout').addEventListener('click', async (e) => {

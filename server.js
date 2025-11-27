@@ -2,7 +2,7 @@
 const express = require('express'); // server
 const path = require('path'); // server
 const fs = require('fs'); // files
-const app = express(); 
+const app = express();
 const session = require('express-session'); // cookies for login
 
 const users = JSON.parse(fs.readFileSync('./database.json'));
@@ -25,20 +25,24 @@ app.post('/api/login', async (req, res) => {
 
     const user = users[username];
     if (!user || user.password !== password) {
+        console.log("POST /api/login failed: " + username + " " + password);
         return res.status(400).json({ error: "Invalid username or password" });
     }
     req.session.username = username;
     res.json({ message: "Logged in", username });
+    console.log("POST /api/login: " + username + " logged in");
 });
 
 // check user (mostly gpt, should be a try/catch but lazy)
 app.get('/api/me', (req, res) => {
     if (!req.session.username) return res.status(401).json({ loggedIn: false });
+    console.log("POST /api/me: " + req.session.username + " check login");
     res.json({ loggedIn: true, username: req.session.username });
 });
 
 // logout
 app.post('/api/logout', (req, res) => {
+    console.log("POST /api/logout: " + req.session.username + " logged out");
     req.session.destroy(() => {
         res.json({ message: "Logged out" });
     });
@@ -46,54 +50,103 @@ app.post('/api/logout', (req, res) => {
 
 // for /signup
 // signup
-app.post('/api/signup-server', async (req, res) => {
-    const { username, password } = req.body;
+app.post('/api/signup', async (req, res) => {
 
-    const user = users[username];
-    if (!user || user.password !== password) {
-        return res.status(400).json({ error: "Invalid username or password" });
+    const { username, password } = req.body;
+    if (!username || !password) {
+        return res.status(400).json({ error: "Username and password are required" });
     }
+    const user = users[username];
+
+    if (user) {
+        return res.status(400).json({ error: "Username already in use" });
+    }
+
+    // Add the new user
+    users[username] = { password };
+
+    // Save to database.json
+    fs.writeFileSync('./database.json', JSON.stringify(users, null, 2));
+
+    // Log in the new user
     req.session.username = username;
-    res.json({ message: "Logged in", username });
+
+    res.json({ message: "Signup successful", username });
 });
 
 
 // for /index
 // get diary entries
-app.post('/api/entries', (req, res) => {
-    const username = req.session.username;
-    if (!username) return res.status(401).json({ success: false, error: "Not logged in" });
-
-    const userDir = path.join(__dirname, 'entries', username);
-    // Check if folder exists
-    if (!fs.existsSync(userDir)) {
-        return res.json({ success: true, files: [] });
-    }
-
-    fs.readdir(userDir, (err, files) => {
-        if (err) {
-            return res.status(500).json({ success: false, error: err.message });
+app.get('/api/entries', async (req, res) => {
+    try {
+        const username = req.session.username;
+        if (!username) {
+            return res.status(401).json({ success: false, error: "Not logged in" });
         }
 
-        // Optionally filter only files
-        const fileList = files.filter(file => fs.statSync(path.join(userDir, file)).isFile());
+        const userDir = path.join(__dirname, 'entries', username);
+        console.log("Getting diaries from:", userDir);
 
+        // Use fs.promises for promise-based file operations
+        const fsPromises = fs.promises;
+
+        // Check if folder exists
+        try {
+            await fsPromises.access(userDir);
+            console.log("Directory exists:", userDir);
+        } catch (err) {
+            // Directory doesn't exist
+            console.log("Directory does not exist, returning empty list");
+            return res.json({ success: true, files: [] });
+        }
+
+        // Read directory
+        const files = await fsPromises.readdir(userDir);
+        console.log("Found files:", files);
+
+        // Filter only files (not directories)
+        const fileList = [];
+        for (const file of files) {
+            const filePath = path.join(userDir, file);
+            const stat = await fsPromises.stat(filePath);
+            if (stat.isFile()) {
+                fileList.push(file);
+            }
+        }
+
+        console.log("Filtered file list:", fileList);
         res.json({ success: true, files: fileList });
-    });
+
+    } catch (err) {
+        console.error('Error reading entries:', err);
+        res.status(500).json({ success: false, error: "Internal server error" });
+    }
 });
 
 // for /edit
 // save edits
 app.post('/api/save', (req, res) => {
+    const username = req.session.username;
+    if (!username) return res.status(401).json({ success: false, error: "Not logged in" });
+
     const { filename, content } = req.body;
     const userDir = path.join(__dirname, 'entries', username);
-    fs.writeFile(userDir+"/"+filename, content, err => {
-        if (err) {
-            return res.status(500).json({ success: false, error: err.message });
-        }
+
+    // Ensure the directory exists
+    if (!fs.existsSync(userDir)) fs.mkdirSync(userDir, { recursive: true });
+
+    fs.writeFile(path.join(userDir, filename), content, err => {
+        if (err) return res.status(500).json({ success: false, error: err.message });
         res.json({ success: true });
     });
 });
 
 
-app.listen(3000, () => console.log('Server running on port 3000'));
+
+app.listen(3000, (error) => {
+    if (error) {
+        console.error('Failed to start server:', error);
+        process.exit(1);
+    }
+    console.log('Server running on port 3000');
+});
