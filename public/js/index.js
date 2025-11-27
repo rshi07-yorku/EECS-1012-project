@@ -1,6 +1,9 @@
 let user = "";
 const today = new Date();
-const newEntry = "" + (today.getMonth() + 1) + today.getDate() + today.getFullYear();
+const month = String(today.getMonth() + 1).padStart(2, '0');
+const day = String(today.getDate()).padStart(2, '0');
+const year = today.getFullYear();
+const newEntry = `${month}${day}${year}`;
 
 // check user
 async function checkUser() {
@@ -23,26 +26,17 @@ checkUser();
 async function getEntries() {
     try {
         const res = await fetch('/api/entries', { credentials: 'include' });
-        
-        // First, check if the response is ok
-        if (!res.ok) {
-            throw new Error(`HTTP error! status: ${res.status}`);
-        }
-        
-        // Parse as JSON, not call .files()
+
+        // Parse as JSON
         const data = await res.json();
-        
-        if (!data.success) {
-            throw new Error(data.error || 'Failed to fetch entries');
-        }
-        
         const files = data.files;
-        let html = ""; // Use let instead of const since we reassign it
-        
+
+        let html = ""; // html that will be under dropdown
+
         if (files.length === 0) {
             document.getElementById('file-list').innerHTML = "<h1>No entries, create one for today!</h1>";
         } else {
-            html = files.map(file => `<li>${file}</li>`).join('');
+            html = files.map(file => `<h1><a href="edit.html?date=${file}">${file}</a></h1>`).join('');
             document.getElementById('file-list').innerHTML = `<h1>${html}</h1>`; // Wrap in <ul>
         }
 
@@ -59,6 +53,13 @@ async function getEntries() {
 }
 
 getEntries();
+
+// edit button
+document.getElementById('edit-btn').addEventListener('click', async (e) => {
+    window.location.href = `edit.html?date=${newEntry}`;
+
+});
+
 
 // logout button
 document.getElementById('logout').addEventListener('click', async (e) => {

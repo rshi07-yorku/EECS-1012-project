@@ -1,6 +1,13 @@
 let user = "";
 let title = "";
 
+// Get the full query string from the URL
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+
+// Get the 'date' parameter
+title = urlParams.get('date');
+
 
 // check user
 async function checkUser() {
