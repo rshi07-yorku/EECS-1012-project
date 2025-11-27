@@ -1,14 +1,25 @@
-// login redirect
-fetch('/me', {
-    method: 'GET',
-    credentials: 'include' 
-})
-.then(res => res.json())
-.then(data => {
-    if (!data.loggedIn) {
+const user = "";
+const date = "";
+
+
+// check user
+async function checkUser() {
+    try {
+        const res = await fetch('/api/me', { credentials: 'include' });
+        const data = await res.json();
+        if (!data.loggedIn) {
+            window.location.href = "login.html";
+        } else {
+            user = data.username;
+        }
+    } catch (err) {
+        console.error("Error checking session:", err);
         window.location.href = "login.html";
     }
-});
+}
+checkUser();
+
+
 
 // render as you write
 const textarea = document.getElementById('test');
@@ -26,19 +37,19 @@ render();
 setInterval(() => {
     const content = textarea.value;
 
-    fetch('http://localhost:3000/save', {
+    fetch('/api/save', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({ filename: 'entries/banana.md', content }) //this should be {date}/{user}/banana.md
     })
-    .then(response => response.json())
-    .then(data => {
-        console.log('Auto-saved:', data);
-    })
-    .catch(err => console.error('Save failed:', err));
-}, 5000); 
+        .then(response => response.json())
+        .then(data => {
+            console.log('Auto-saved:', data);
+        })
+        .catch(err => console.error('Save failed:', err));
+}, 5000);
 
 //theme switcher
 const root = document.querySelector(":root");

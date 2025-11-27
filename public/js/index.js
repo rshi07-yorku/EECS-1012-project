@@ -1,19 +1,31 @@
-// login redirect
-fetch('/me', {
-    method: 'GET',
-    credentials: 'include' 
-})
-.then(res => res.json())
-.then(data => {
-    if (!data.loggedIn) {
+const user = "";
+
+// check user
+async function checkUser() {
+    try {
+        const res = await fetch('/api/me', { credentials: 'include' });
+        const data = await res.json();
+        if (!data.loggedIn) {
+            window.location.href = "login.html";
+        } else {
+            user = data.username;
+        }
+    } catch (err) {
+        console.error("Error checking session:", err);
         window.location.href = "login.html";
     }
-});
+}
+checkUser();
+
+
+checkSession();
+
+// get md for user
 
 // logout button
 document.getElementById('logout').addEventListener('click', async (e) => {
     try {
-        const res = await fetch('http://localhost:3000/logout', {
+        const res = await fetch('/api/logout', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             credentials: 'include' // important if using sessions/cookies

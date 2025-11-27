@@ -1,5 +1,5 @@
 // check if logged in
-fetch('/me', {
+fetch('/api/me', {
     method: 'GET',
     credentials: 'include' 
 })
@@ -20,7 +20,7 @@ document.getElementById('login').addEventListener('submit', async (e) => {
 
     try {
         console.log(JSON.stringify({ username, password }));
-        const res = await fetch('http://localhost:3000/login', {
+        const res = await fetch('/api/login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ username, password })
