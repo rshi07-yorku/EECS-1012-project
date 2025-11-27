@@ -53,4 +53,49 @@ if (savedTheme === "dark") {
     setTheme('light');
     document.getElementById("theme-switcher-grid").classList.remove("night-theme");
 }
+//signup logic
+document.getElementById("signupBtn").addEventListener("click", function() {
+    const usernameInput = document.getElementById("username").value;
+    const passwordInput = document.getElementById("password").value;
+    const messageBox = document.getElementById("message");
 
+    // basic validation
+    if(!usernameInput || !passwordInput) {
+        messageBox.style.color = "red";
+        messageBox.innerText = "Please fill in all fields.";
+        return;
+    }
+
+    messageBox.style.color = "var(--text-color)";
+    messageBox.innerText = "Creating account...";
+
+    // hit the signup endpoint
+    fetch("http://localhost:3000/signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username: usernameInput, password: passwordInput })
+    })
+    .then(response => {
+        if (response.status === 409) {
+            throw new Error("Username already taken.");
+        }
+        if (!response.ok) {
+            throw new Error("Server error.");
+        }
+        return response.json();
+    })
+    .then(data => {
+        // success, redirect to login
+        messageBox.style.color = "#04a5e5"; 
+        messageBox.innerText = "Account created! Redirecting...";
+        
+        setTimeout(() => {
+            window.location.href = "login.html";
+        }, 1500);
+    })
+    .catch(error => {
+        console.error(error);
+        messageBox.style.color = "red";
+        messageBox.innerText = error.message;
+    });
+});
