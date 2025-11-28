@@ -8,6 +8,10 @@ const urlParams = new URLSearchParams(queryString);
 // Get the 'date' parameter
 title = urlParams.get('date');
 
+// make sure js done loading before showing body
+document.addEventListener('DOMContentLoaded', () => {
+    document.body.style.display = 'flex'; // show content
+});
 
 // check user
 async function checkUser() {
@@ -58,7 +62,7 @@ render();
 
 setInterval(() => {
     const content = textarea.value;
-    let savename= title+".md";
+    let savename = title + ".md";
     fetch('/api/save', {
         method: 'POST',
         headers: {

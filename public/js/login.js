@@ -1,3 +1,5 @@
+
+
 // check if logged in
 fetch('/api/me', {
     method: 'GET',
@@ -8,6 +10,11 @@ fetch('/api/me', {
     if (data.loggedIn) {
         window.location.href = "index.html";
     }
+});
+
+// make sure js done loading before showing body
+document.addEventListener('DOMContentLoaded', () => {
+    document.body.style.display = 'flex'; // show content
 });
 
 // login

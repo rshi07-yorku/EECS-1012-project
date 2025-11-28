@@ -25,7 +25,7 @@
 }
 
 body {
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: left;
     min-height: 100vh;

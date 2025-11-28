@@ -33,6 +33,7 @@
 }
 
 body {
+    display: none;
     background-color: var(--bg-color);
     position: static;
     justify-content: center;
@@ -101,7 +102,6 @@ body {
 
 .file-list {
     position: static;
-    padding: 0px 18px;
     overflow: hidden;
     background-color: var(--coll-color);
     max-height: 0;

@@ -5,7 +5,7 @@ const fs = require('fs'); // files
 const app = express();
 const session = require('express-session'); // cookies for login
 const users = JSON.parse(fs.readFileSync('./database.json'));
-const fsPromises=fs.promises;
+const fsPromises = fs.promises;
 
 // enabling packages
 app.use(express.json());
@@ -36,7 +36,7 @@ app.post('/api/login', async (req, res) => {
 // check user (mostly gpt, should be a try/catch but lazy)
 app.get('/api/me', (req, res) => {
     if (!req.session.username) return res.status(401).json({ loggedIn: false });
-    console.log("POST /api/me: " + req.session.username + " check login");
+    console.log("GET /api/me: " + req.session.username + " check login");
     res.json({ loggedIn: true, username: req.session.username });
 });
 
@@ -83,13 +83,10 @@ app.get('/api/listentries', async (req, res) => {
         if (!username) {
             return res.status(401).json({ success: false, error: "Not logged in" });
         }
-
         const userDir = path.join(__dirname, 'entries', username);
-        console.log("Getting diaries from:", userDir);
 
         // Read directory
         const files = await fsPromises.readdir(userDir);
-        console.log("Found files:", files);
 
         // Filter only files (not directories)
         const fileList = [];
@@ -97,12 +94,12 @@ app.get('/api/listentries', async (req, res) => {
             const filePath = path.join(userDir, file);
             const stat = await fsPromises.stat(filePath);
             if (stat.isFile()) {
-                file=file.slice(0,-3);
+                file = file.slice(0, -3); // remove .md for display on index.html
                 fileList.push(file);
             }
         }
 
-        console.log("Filtered file list:", fileList);
+        console.log(`POST /api/listentries: Got ${fileList.length} entries for ${username}`);
         res.json({ success: true, files: fileList });
 
     } catch (err) {
@@ -122,11 +119,11 @@ app.get('/api/getentry', async (req, res) => {
         }
 
         const entry = path.join(__dirname, 'entries', username, title);
-        console.log("Getting entry from:", entry);
-
         // Check if folder exists
         try {
             const output = await fsPromises.readFile(entry, 'utf-8');
+            console.log(`POST /api/getentry: Opening ${entry} for ${username}`);
+
             res.json({ success: true, output });
         } catch (err) {
             if (err.code === 'ENOENT') {
@@ -153,6 +150,8 @@ app.post('/api/save', (req, res) => {
 
     fs.writeFile(path.join(userDir, filename), content, err => {
         if (err) return res.status(500).json({ success: false, error: err.message });
+            console.log(`POST /api/save: ${filename} edited and saved for ${username}`);
+
         res.json({ success: true });
     });
 });

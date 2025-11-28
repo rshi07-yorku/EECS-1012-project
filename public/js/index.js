@@ -21,6 +21,21 @@ async function checkUser() {
 }
 const user = checkUser();
 
+// make sure js done loading before showing body, load collapsible thing to start open
+document.addEventListener('DOMContentLoaded', () => {
+    document.body.style.display = 'block'; // show content
+
+    // load collapsible because it messes with maxheight otherwise
+    document.querySelectorAll(".collapsible").forEach(button => {
+        const content = button.nextElementSibling;
+        // start open
+        if (button.classList.contains("start-open")) {
+            button.classList.add("active");
+            content.style.maxHeight = content.scrollHeight + "px";
+        }
+    });
+});
+
 // get md for user
 async function listEntries() {
     try {
@@ -28,15 +43,23 @@ async function listEntries() {
 
         // Parse as JSON
         const data = await res.json();
-        const files = data.files;
+        let files = data.files;
 
         let html = ""; // html that will be under dropdown
 
         if (files.length === 0) {
             document.getElementById('file-list').innerHTML = "<h1>No entries, create one for today!</h1>";
         } else {
-            html = files.map(file => `<h1><a href="edit.html?date=${file}">${file}</a></h1>`).join('');
-            document.getElementById('file-list').innerHTML = `<h1>${html}</h1>`; // Wrap in <ul>
+            // does essentially everything below in one line, but way harder to read
+            // html = files.map(file => `<h1><a href="edit.html?date=${file}">${file}</a></h1>`).reverse().join('');
+            files = files.reverse();
+            for (file of files) {
+                let display = file.slice(0, 2) + "/" + file.slice(2, 4) + "/" + file.slice(4);
+                file = `<h1><a href="edit.html?date=${file}">${display}</a></h1>`;
+                html = html + file;
+            }
+
+            document.getElementById('file-list').innerHTML = `<h1>${html}</h1>`;
         }
 
     } catch (err) {
@@ -50,7 +73,6 @@ async function listEntries() {
         }
     }
 }
-
 listEntries();
 
 // edit button
@@ -79,23 +101,32 @@ document.getElementById('logout').addEventListener('click', async (e) => {
     }
 });
 
-// collapsible parition?
-var coll = document.getElementsByClassName("collapsible");
-var i;
+// collapsible partition
 
-for (i = 0; i < coll.length; i++) {
-    coll[i].addEventListener("click", function () {
+const coll = document.querySelectorAll(".collapsible");
+
+coll.forEach(button => {
+    const content = button.nextElementSibling;
+
+    // start open
+    if (button.classList.contains("start-open")) {
+        button.classList.add("active");
+        content.style.maxHeight = content.scrollHeight + "px";
+    }
+
+    button.addEventListener("click", () => {
         document.body.classList.remove("no-animation");
-        this.classList.toggle("active");
-        var content = this.nextElementSibling;
-        console.log(content)
+        button.classList.toggle("active");
+
+        if (!content) return; // safety check
+
         if (content.style.maxHeight) {
             content.style.maxHeight = null;
         } else {
             content.style.maxHeight = content.scrollHeight + "px";
         }
     });
-}
+});
 
 
 

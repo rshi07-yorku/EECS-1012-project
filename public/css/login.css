@@ -36,7 +36,7 @@ body.no-animation, .no-animation * {
 
 body {
     background-color: var(--bg-color);
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
