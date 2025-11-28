@@ -26,9 +26,25 @@ async function checkUser() {
 }
 checkUser();
 
+// check to see if entry already exists
+async function getEntry() { //wip
+    try {
+        const res = await fetch(`/api/getentry?title=${title}`, { credentials: 'include' });
+        const data = await res.json();
+
+        if (data.success) {
+            document.getElementById('input').innerText = data.output;
+        } else {
+            console.error('Error fetching entry:', data.error);
+        }
+    } catch (err) {
+        console.error('Network or server error:', err);
+    }
+}
+getEntry();
 
 // render as you write
-const textarea = document.getElementById('test');
+const textarea = document.getElementById('input');
 const output = document.getElementById('output');
 
 function render() {
@@ -42,13 +58,13 @@ render();
 
 setInterval(() => {
     const content = textarea.value;
-
+    let savename= title+".md";
     fetch('/api/save', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ filename: title, content })
+        body: JSON.stringify({ filename: savename, content })
     })
         .then(response => response.json())
         .then(data => {

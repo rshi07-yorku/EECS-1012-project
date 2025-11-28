@@ -4,8 +4,8 @@ const path = require('path'); // server
 const fs = require('fs'); // files
 const app = express();
 const session = require('express-session'); // cookies for login
-
 const users = JSON.parse(fs.readFileSync('./database.json'));
+const fsPromises=fs.promises;
 
 // enabling packages
 app.use(express.json());
@@ -77,7 +77,7 @@ app.post('/api/signup', async (req, res) => {
 
 // for /index
 // get diary entries
-app.get('/api/entries', async (req, res) => {
+app.get('/api/listentries', async (req, res) => {
     try {
         const username = req.session.username;
         if (!username) {
@@ -87,29 +87,17 @@ app.get('/api/entries', async (req, res) => {
         const userDir = path.join(__dirname, 'entries', username);
         console.log("Getting diaries from:", userDir);
 
-        // Use fs.promises for promise-based file operations
-        const fsPromises = fs.promises;
-
-        // Check if folder exists
-        try {
-            await fsPromises.access(userDir);
-            console.log("Directory exists:", userDir);
-        } catch (err) {
-            // Directory doesn't exist
-            console.log("Directory does not exist, returning empty list");
-            return res.json({ success: true, files: [] });
-        }
-
         // Read directory
         const files = await fsPromises.readdir(userDir);
         console.log("Found files:", files);
 
         // Filter only files (not directories)
         const fileList = [];
-        for (const file of files) {
+        for (let file of files) {
             const filePath = path.join(userDir, file);
             const stat = await fsPromises.stat(filePath);
             if (stat.isFile()) {
+                file=file.slice(0,-3);
                 fileList.push(file);
             }
         }
@@ -124,6 +112,34 @@ app.get('/api/entries', async (req, res) => {
 });
 
 // for /edit
+// get specified entry
+app.get('/api/getentry', async (req, res) => {
+    try {
+        const title = req.query.title + ".md";
+        const username = req.session.username;
+        if (!username) {
+            return res.status(401).json({ success: false, error: "Not logged in" });
+        }
+
+        const entry = path.join(__dirname, 'entries', username, title);
+        console.log("Getting entry from:", entry);
+
+        // Check if folder exists
+        try {
+            const output = await fsPromises.readFile(entry, 'utf-8');
+            res.json({ success: true, output });
+        } catch (err) {
+            if (err.code === 'ENOENT') {
+                return res.json({ success: true, output: "" });
+            }
+            throw err; // Other errors
+        }
+    } catch (err) {
+        console.error('Error reading entries:', err);
+        res.status(500).json({ success: false, error: "Internal server error" });
+    }
+});
+
 // save edits
 app.post('/api/save', (req, res) => {
     const username = req.session.username;

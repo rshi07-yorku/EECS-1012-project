@@ -1,4 +1,3 @@
-let user = "";
 const today = new Date();
 const month = String(today.getMonth() + 1).padStart(2, '0');
 const day = String(today.getDate()).padStart(2, '0');
@@ -13,19 +12,19 @@ async function checkUser() {
         if (!data.loggedIn) {
             window.location.href = "login.html";
         } else {
-            user = data.username;
+            return data.username;
         }
     } catch (err) {
         console.error("Error checking session:", err);
         window.location.href = "login.html";
     }
 }
-checkUser();
+const user = checkUser();
 
 // get md for user
-async function getEntries() {
+async function listEntries() {
     try {
-        const res = await fetch('/api/entries', { credentials: 'include' });
+        const res = await fetch('/api/listentries', { credentials: 'include' });
 
         // Parse as JSON
         const data = await res.json();
@@ -52,7 +51,7 @@ async function getEntries() {
     }
 }
 
-getEntries();
+listEntries();
 
 // edit button
 document.getElementById('edit-btn').addEventListener('click', async (e) => {
