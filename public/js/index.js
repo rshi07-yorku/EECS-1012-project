@@ -21,21 +21,6 @@ async function checkUser() {
 }
 const user = checkUser();
 
-// make sure js done loading before showing body, load collapsible thing to start open
-document.addEventListener('DOMContentLoaded', () => {
-    document.body.style.display = 'block'; // show content
-
-    // load collapsible because it messes with maxheight otherwise
-    document.querySelectorAll(".collapsible").forEach(button => {
-        const content = button.nextElementSibling;
-        // start open
-        if (button.classList.contains("start-open")) {
-            button.classList.add("active");
-            content.style.maxHeight = content.scrollHeight + "px";
-        }
-    });
-});
-
 // get md for user
 async function listEntries() {
     try {
@@ -59,7 +44,7 @@ async function listEntries() {
                 html = html + file;
             }
 
-            document.getElementById('file-list').innerHTML = `<h1>${html}</h1>`;
+            document.getElementById('file-list').innerHTML = html;
         }
 
     } catch (err) {
@@ -108,7 +93,7 @@ const coll = document.querySelectorAll(".collapsible");
 coll.forEach(button => {
     const content = button.nextElementSibling;
 
-    // start open
+    // start open (this doesn't work)
     if (button.classList.contains("start-open")) {
         button.classList.add("active");
         content.style.maxHeight = content.scrollHeight + "px";
@@ -127,8 +112,6 @@ coll.forEach(button => {
         }
     });
 });
-
-
 
 //theme switcher
 
