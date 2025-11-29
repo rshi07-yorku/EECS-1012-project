@@ -90,6 +90,8 @@ body {
     border: none;
     image-resolution: 100;
     margin-left: 10px;
+    position: relative;
+    left: 1532px;
 }
 
 
