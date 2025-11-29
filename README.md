@@ -1,7 +1,12 @@
 # RUN SERVER BEFORE TESTING
 
 In terminal type
-`node server.js`
+```
+npm install
+node server.js
+```
+this installs server dependencies, and runs server.js
+
 test stuff at http://localhost:3000
 
 # Password Protected Diary

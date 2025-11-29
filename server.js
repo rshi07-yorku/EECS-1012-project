@@ -1,8 +1,8 @@
 // packages
 const express = require('express'); // server
-const path = require('path'); // Node.js module for handling file & directory paths
-const fs = require('fs'); // Reading, writing, creating, deleting files
-const app = express(); 
+const path = require('path'); // server
+const fs = require('fs'); // files
+const app = express();
 const session = require('express-session'); // cookies for login
 const users = JSON.parse(fs.readFileSync('./database.json'));
 const fsPromises = fs.promises;
@@ -19,7 +19,7 @@ app.use(session({
     cookie: { secure: false } // not https
 }));
 
-// login 
+// login (mostly gpt)
 app.post('/api/login', async (req, res) => {
     const { username, password } = req.body;
 
@@ -33,7 +33,7 @@ app.post('/api/login', async (req, res) => {
     console.log("POST /api/login: " + username + " logged in");
 });
 
-// check user 
+// check user (mostly gpt, should be a try/catch but lazy)
 app.get('/api/me', (req, res) => {
     if (!req.session.username) return res.status(401).json({ loggedIn: false });
     console.log("GET /api/me: " + req.session.username + " check login");
@@ -67,6 +67,12 @@ app.post('/api/signup', async (req, res) => {
 
     // Save to database.json
     fs.writeFileSync('./database.json', JSON.stringify(users, null, 2));
+
+    // create user dir for entries
+    const userDir = path.join(__dirname, 'entries', username);
+    if (!fs.existsSync(userDir)) {
+        fs.mkdirSync(userDir, { recursive: true });
+    }
 
     // Log in the new user
     req.session.username = username;
@@ -143,7 +149,7 @@ app.post('/api/save', (req, res) => {
     if (!username) return res.status(401).json({ success: false, error: "Not logged in" });
 
     const { filename, content } = req.body;
-    const userDir = path.join(__dirname, 'entries', username);
+    const userDir = path.join(__dirname, 'entries', username); 
 
     // Ensure the directory exists
     if (!fs.existsSync(userDir)) fs.mkdirSync(userDir, { recursive: true });
