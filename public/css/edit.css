@@ -86,7 +86,7 @@ textarea {
     background-color: var(--bg-color);
     color: var(--text-color);
     width: 95%;
-    height: 95%;
+    height: 100%;
     border: none;
     margin: auto;
     resize: none;
