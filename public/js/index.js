@@ -92,13 +92,6 @@ const coll = document.querySelectorAll(".collapsible");
 
 coll.forEach(button => {
     const content = button.nextElementSibling;
-
-    // start open (this doesn't work)
-    if (button.classList.contains("start-open")) {
-        button.classList.add("active");
-        content.style.maxHeight = content.scrollHeight + "px";
-    }
-
     button.addEventListener("click", () => {
         document.body.classList.remove("no-animation");
         button.classList.toggle("active");

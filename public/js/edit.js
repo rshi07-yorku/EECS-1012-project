@@ -31,13 +31,13 @@ async function checkUser() {
 checkUser();
 
 // check to see if entry already exists
-async function getEntry() { //wip
+async function getEntry() { 
     try {
         const res = await fetch(`/api/getentry?title=${title}`, { credentials: 'include' });
         const data = await res.json();
 
         if (data.success) {
-            document.getElementById('input').innerText = data.output;
+            document.getElementById('input').value = data.output;
         } else {
             console.error('Error fetching entry:', data.error);
         }
