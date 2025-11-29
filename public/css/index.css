@@ -91,7 +91,12 @@ body {
     image-resolution: 100;
     margin-left: 10px;
     position: relative;
-    left: 1532px;
+    margin-left: 1539px;
+    transition: background 0.3s ease;
+}
+
+#logout.on {
+   background: url("gradient-power-button-icon-on-189105.png");
 }
 
 

@@ -132,12 +132,15 @@ function setTheme(theme) {
 // THEME SWITCH EVENT + ICON SWAP
 document
     .getElementById("theme-switcher-grid")
+    // .getElementById("logout")
     .addEventListener("click", function () {
 
         const homeIcon = document.querySelector(".home-icon");
 
         document.body.classList.remove("no-animation");
         this.classList.toggle("night-theme");
+        // logoutbtn.classList.toggle("on");
+        
 
         if (this.classList.contains("night-theme")) {
             setTheme('dark');
