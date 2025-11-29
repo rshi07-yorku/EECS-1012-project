@@ -1,8 +1,8 @@
 // packages
 const express = require('express'); // server
-const path = require('path'); // server
-const fs = require('fs'); // files
-const app = express();
+const path = require('path'); // Node.js module for handling file & directory paths
+const fs = require('fs'); // Reading, writing, creating, deleting files
+const app = express(); 
 const session = require('express-session'); // cookies for login
 const users = JSON.parse(fs.readFileSync('./database.json'));
 const fsPromises = fs.promises;
