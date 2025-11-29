@@ -33,7 +33,7 @@ app.post('/api/login', async (req, res) => {
     console.log("POST /api/login: " + username + " logged in");
 });
 
-// check user (mostly gpt, should be a try/catch but lazy)
+// check user 
 app.get('/api/me', (req, res) => {
     if (!req.session.username) return res.status(401).json({ loggedIn: false });
     console.log("GET /api/me: " + req.session.username + " check login");
