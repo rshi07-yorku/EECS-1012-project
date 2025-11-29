@@ -46,10 +46,12 @@ body {
 
 /* header*/
 .header {
-    display: static;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
     height: 10%;
     width: 100%;
-    align-items: center;
     padding: 20px 10px;
     position: fixed;
     top: 0;
@@ -57,30 +59,42 @@ body {
     transition: all 0.8s ease;
 }
 
-.header-right {
-    float: right;
+.home-icon {
+    width: 40px;
+    height: 40px;
+    position: relative;
+    left: 0;
+    top: 0;
 }
 
 
 
 
 
-.header-btn{
-    padding: 6px;
-    margin-right: 25px;
+.header-btn {
+    padding: 6px 14px;
+    margin: 0;
     color: var(--btn-text);
     background: var(--btn-color);
     border-radius: 10px;
 }
+
+.header-right {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
+
 #logout {
-    width: 10px;
-    height: 10px;
-    padding: 0;
-    margin-right: 0;
     background: none;
     border: none;
+<<<<<<< HEAD
     image-resolution: 100;
+=======
+    margin-left: 10px;
+>>>>>>> c1423153e5b6895871093f4555a8901fb1ff5a0e
 }
+
 
 
 .not-header {
@@ -284,3 +298,11 @@ body.no-animation,
 }
 
 /* this is the end of switch button*/
+
+.home-icon {
+    width: 40px;
+    height: 40px;
+    position: relative;
+    left: 0;
+    top: 0;
+}

@@ -1,3 +1,4 @@
+// Get today's date for new entry
 const today = new Date();
 const month = String(today.getMonth() + 1).padStart(2, '0');
 const day = String(today.getDate()).padStart(2, '0');
@@ -25,35 +26,27 @@ const user = checkUser();
 async function listEntries() {
     try {
         const res = await fetch('/api/listentries', { credentials: 'include' });
-
-        // Parse as JSON
         const data = await res.json();
         let files = data.files;
-
-        let html = ""; // html that will be under dropdown
+        let html = "";
 
         if (files.length === 0) {
             document.getElementById('file-list').innerHTML = "<h1>No entries, create one for today!</h1>";
         } else {
-            // does essentially everything below in one line, but way harder to read
-            // html = files.map(file => `<h1><a href="edit.html?date=${file}">${file}</a></h1>`).reverse().join('');
             files = files.reverse();
             for (file of files) {
                 let display = file.slice(0, 2) + "/" + file.slice(2, 4) + "/" + file.slice(4);
                 file = `<h1><a href="edit.html?date=${file}">${display}</a></h1>`;
                 html = html + file;
             }
-
             document.getElementById('file-list').innerHTML = html;
         }
 
     } catch (err) {
         console.error("Error fetching entries:", err);
-        // Only redirect if it's an authentication error
         if (err.message.includes('401') || err.message.includes('Not logged in')) {
             window.location.href = "login.html";
         } else {
-            // Show error to user
             document.getElementById('file-list').innerHTML = `<p>Error loading entries: ${err.message}</p>`;
         }
     }
@@ -63,9 +56,7 @@ listEntries();
 // edit button
 document.getElementById('edit-btn').addEventListener('click', async (e) => {
     window.location.href = `edit.html?date=${newEntry}`;
-
 });
-
 
 // logout button
 document.getElementById('logout').addEventListener('click', async (e) => {
@@ -73,10 +64,9 @@ document.getElementById('logout').addEventListener('click', async (e) => {
         const res = await fetch('/api/logout', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            credentials: 'include' // important if using sessions/cookies
+            credentials: 'include'
         });
         if (res.ok) {
-            // Redirect to login page after successful logout
             window.location.href = "login.html";
         } else {
             console.error('Logout failed');
@@ -87,16 +77,14 @@ document.getElementById('logout').addEventListener('click', async (e) => {
 });
 
 // collapsible partition
-
 const coll = document.querySelectorAll(".collapsible");
-
 coll.forEach(button => {
     const content = button.nextElementSibling;
     button.addEventListener("click", () => {
         document.body.classList.remove("no-animation");
         button.classList.toggle("active");
 
-        if (!content) return; // safety check
+        if (!content) return;
 
         if (content.style.maxHeight) {
             content.style.maxHeight = null;
@@ -106,9 +94,7 @@ coll.forEach(button => {
     });
 });
 
-//theme switcher
-
-//inital setup
+// theme switcher
 const root = document.querySelector(":root");
 document.body.classList.add("no-animation");
 
@@ -138,35 +124,42 @@ const themes = {
 };
 
 function setTheme(theme) {
-
     Object.entries(themes[theme]).forEach(([prop, value]) => {
         root.style.setProperty(prop, value);
     });
 }
+
+// THEME SWITCH EVENT + ICON SWAP
 document
     .getElementById("theme-switcher-grid")
     .addEventListener("click", function () {
+
+        const homeIcon = document.querySelector(".home-icon");
+
         document.body.classList.remove("no-animation");
         this.classList.toggle("night-theme");
+
         if (this.classList.contains("night-theme")) {
             setTheme('dark');
             localStorage.setItem("theme", "dark");
-        }
-        else {
+            homeIcon.src = "homedark.png";   // BLUE ICON
+        } else {
             setTheme('light');
             localStorage.setItem("theme", "light");
+            homeIcon.src = "home.png";       // LIGHT ICON
         }
-
     });
 
-// persistence
+// Persistence on load
 const savedTheme = localStorage.getItem("theme");
+const homeIcon = document.querySelector(".home-icon");
 
 if (savedTheme === "dark") {
     setTheme('dark');
     document.getElementById("theme-switcher-grid").classList.add("night-theme");
+    homeIcon.src = "homedark.png";   // BLUE ICON ON LOAD
 } else {
     setTheme('light');
     document.getElementById("theme-switcher-grid").classList.remove("night-theme");
+    homeIcon.src = "home.png";       // LIGHT ICON ON LOAD
 }
-
