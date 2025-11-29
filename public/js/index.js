@@ -1,4 +1,4 @@
-// Get today's date for new entry
+// get date for creating new entry
 const today = new Date();
 const month = String(today.getMonth() + 1).padStart(2, '0');
 const day = String(today.getDate()).padStart(2, '0');
@@ -26,24 +26,29 @@ const user = checkUser();
 async function listEntries() {
     try {
         const res = await fetch('/api/listentries', { credentials: 'include' });
+
         const data = await res.json();
         let files = data.files;
-        let html = "";
+
+        let html = ""; 
 
         if (files.length === 0) {
             document.getElementById('file-list').innerHTML = "<h1>No entries, create one for today!</h1>";
         } else {
+
             files = files.reverse();
             for (file of files) {
                 let display = file.slice(0, 2) + "/" + file.slice(2, 4) + "/" + file.slice(4);
                 file = `<h1><a href="edit.html?date=${file}">${display}</a></h1>`;
                 html = html + file;
             }
+
             document.getElementById('file-list').innerHTML = html;
         }
 
     } catch (err) {
         console.error("Error fetching entries:", err);
+
         if (err.message.includes('401') || err.message.includes('Not logged in')) {
             window.location.href = "login.html";
         } else {
@@ -83,7 +88,6 @@ coll.forEach(button => {
     button.addEventListener("click", () => {
         document.body.classList.remove("no-animation");
         button.classList.toggle("active");
-
         if (!content) return;
 
         if (content.style.maxHeight) {
@@ -95,6 +99,8 @@ coll.forEach(button => {
 });
 
 // theme switcher
+
+// initial setup
 const root = document.querySelector(":root");
 document.body.classList.add("no-animation");
 
@@ -129,14 +135,26 @@ function setTheme(theme) {
     });
 }
 
-// THEME SWITCH EVENT + ICON SWAP
+// home icon 
+const homeIcon = document.getElementById("home-icon");
+const savedTheme = localStorage.getItem("theme");
+
+// set icon correctly on page load
+if (savedTheme === "dark") {
+    setTheme('dark');
+    document.getElementById("theme-switcher-grid").classList.add("night-theme");
+    homeIcon.src = "assets/homedark.png";
+} else {
+    setTheme('light');
+    document.getElementById("theme-switcher-grid").classList.remove("night-theme");
+    homeIcon.src = "assets/home.png";
+}
+
+// theme switcher button
 document
     .getElementById("theme-switcher-grid")
     // .getElementById("logout")
     .addEventListener("click", function () {
-
-        const homeIcon = document.querySelector(".home-icon");
-
         document.body.classList.remove("no-animation");
         this.classList.toggle("night-theme");
         // logoutbtn.classList.toggle("on");
@@ -145,24 +163,10 @@ document
         if (this.classList.contains("night-theme")) {
             setTheme('dark');
             localStorage.setItem("theme", "dark");
-            homeIcon.src = "homedark.png";   // BLUE ICON
+            homeIcon.src = "assets/homedark.png";
         } else {
             setTheme('light');
             localStorage.setItem("theme", "light");
-            homeIcon.src = "home.png";       // LIGHT ICON
+            homeIcon.src = "assets/home.png";
         }
     });
-
-// Persistence on load
-const savedTheme = localStorage.getItem("theme");
-const homeIcon = document.querySelector(".home-icon");
-
-if (savedTheme === "dark") {
-    setTheme('dark');
-    document.getElementById("theme-switcher-grid").classList.add("night-theme");
-    homeIcon.src = "homedark.png";   // BLUE ICON ON LOAD
-} else {
-    setTheme('light');
-    document.getElementById("theme-switcher-grid").classList.remove("night-theme");
-    homeIcon.src = "home.png";       // LIGHT ICON ON LOAD
-}
