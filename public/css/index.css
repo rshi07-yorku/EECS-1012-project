@@ -79,6 +79,7 @@ body {
     margin-right: 0;
     background: none;
     border: none;
+    image-resolution: 100;
 }
 
 
@@ -150,6 +151,7 @@ body.no-animation,
 .theme-switcher-grid.night-theme {
     background-color: var(--night-bg-color);
     border-color: var(--border-color-dark);
+    
 }
 
 .sun {
