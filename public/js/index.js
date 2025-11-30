@@ -151,18 +151,18 @@ if (savedTheme === "dark") {
 }
 
 // theme switcher button
-const logout = document.getElementById("logouticon");
+const logout_icon = document.getElementById("logouticon");
 
 
 
 if (savedTheme === "dark") {
     setTheme('dark');
     document.getElementById("theme-switcher-grid").classList.add("night-theme");
-    logout.src = "assets/gradient-power-button-icon-189101.png";
+    logout_icon.src = "assets/gradient-power-button-icon-189101.png";
 } else {
     setTheme('light');
     document.getElementById("theme-switcher-grid").classList.remove("night-theme");
-    logout.src = "assets/on-off-power-button-189106.png";
+    logout_icon.src = "assets/on-off-power-button-189106.png";
 }
 document
     .getElementById("theme-switcher-grid")
