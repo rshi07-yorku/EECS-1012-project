@@ -151,18 +151,18 @@ if (savedTheme === "dark") {
 }
 
 // theme switcher button
-const logout = document.getElementById("logout");
-logout.classList.toggle("on");
+const logout = document.getElementById("logouticon");
+
 
 
 if (savedTheme === "dark") {
     setTheme('dark');
     document.getElementById("theme-switcher-grid").classList.add("night-theme");
-    logout.src = "assets/gradient-power-button-icon-189101.png";
+    logouticon.src = "assets/gradient-power-button-icon-189101.png";
 } else {
     setTheme('light');
     document.getElementById("theme-switcher-grid").classList.remove("night-theme");
-    homeIcon.src = "assets/on-off-power-button-189106.png";
+    logouticon.src = "assets/on-off-power-button-189106.png";
 }
 document
     .getElementById("theme-switcher-grid")

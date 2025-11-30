@@ -87,8 +87,8 @@ body {
     align-items: center;
 }
 
-#logout {
-    background: url("on-off-power-button-189106.png");
+#logouticon {
+    background: none;
     border: none;
     image-resolution: 100;
     cursor: pointer;
@@ -96,10 +96,6 @@ body {
     position: relative;
     margin-left: 1539px;
     transition: background 0.3s ease;
-}
-
-#logout.on {
-   background: url("gradient-power-button-icon-189101.png");
 }
 
 
