@@ -31,6 +31,16 @@
     box-sizing: border-box;
     font-family: Arial, sans-serif;
 }
+#edit-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: var(--btn-color);
+    color: var(--btn-text);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
 
 body {
     
