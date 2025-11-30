@@ -38,6 +38,8 @@ async function getEntry() {
 
         if (data.success) {
             document.getElementById('input').value = data.output;
+            // --- FIX: Render preview immediately after loading text ---
+            render(); 
         } else {
             console.error('Error fetching entry:', data.error);
         }
@@ -52,14 +54,14 @@ const textarea = document.getElementById('input');
 const output = document.getElementById('output');
 
 function render() {
+    // marked is available globally via the marked.js script
     output.innerHTML = marked.parse(textarea.value);
 }
 
 textarea.addEventListener('input', render);
 render();
 
-// Auto-save every 30 seconds
-
+// Auto-save every 5 seconds (5000ms)
 setInterval(() => {
     const content = textarea.value;
     let savename = title + ".md";
@@ -107,17 +109,15 @@ const themes = {
 };
 
 function setTheme(theme) {
-
     Object.entries(themes[theme]).forEach(([prop, value]) => {
         root.style.setProperty(prop, value);
     });
 }
-const homeIcon = document.getElementById("home-icon");
 
+const homeIcon = document.getElementById("home-icon");
 const logouticon = document.getElementById("logouticon");
 
 document
-
     .getElementById("theme-switcher-grid")
     .addEventListener("click", function () {
         document.body.classList.remove("no-animation");
@@ -125,7 +125,7 @@ document
         if (this.classList.contains("night-theme")) {
             setTheme('dark');
             localStorage.setItem("theme", "dark");
-             homeIcon.src = "assets/homedark.png";
+            homeIcon.src = "assets/homedark.png";
             logouticon.src = "assets/gradient-power-button-icon-189101.png";
         }
         else {
@@ -133,9 +133,7 @@ document
             localStorage.setItem("theme", "light");
             homeIcon.src = "assets/home.png";
             logouticon.src = "assets/on-off-power-button-189106.png";
-
         }
-
     });
 
 const savedTheme = localStorage.getItem("theme");
@@ -144,11 +142,10 @@ if (savedTheme === "dark") {
     setTheme('dark');
     document.getElementById("theme-switcher-grid").classList.add("night-theme");
     homeIcon.src = "assets/homedark.png";
-            logouticon.src = "assets/gradient-power-button-icon-189101.png";
+    logouticon.src = "assets/gradient-power-button-icon-189101.png";
 } else {
     setTheme('light');
     document.getElementById("theme-switcher-grid").classList.remove("night-theme");
-     homeIcon.src = "assets/home.png";
+    homeIcon.src = "assets/home.png";
     logouticon.src = "assets/on-off-power-button-189106.png";
 }
-
