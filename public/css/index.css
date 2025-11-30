@@ -31,15 +31,21 @@
     box-sizing: border-box;
     font-family: Arial, sans-serif;
 }
-#edit-btn {
-    margin-top: 20px;
-    padding: 10px 20px;
+#edit-btn{
     background-color: var(--btn-color);
     color: var(--btn-text);
-    border: none;
-    border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    padding: 18px;
+    width: 97%;
+    border: black;
+    text-align: left;
+    outline: black;
+    font-size: 30px;
+    position: relative;
+    bottom: 10px;
+    left: 10px;
+  text-align: center;
+
 }
 
 body {
@@ -104,7 +110,7 @@ body {
     cursor: pointer;
     margin-left: 10px;
     position: relative;
-    margin-left: 1539px;
+    margin-left: 1700px;
     transition: background 0.3s ease;
 }
 
