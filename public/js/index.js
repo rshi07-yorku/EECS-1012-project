@@ -136,6 +136,7 @@ function setTheme(theme) {
 }
 
 // home icon and logout icon
+document.addEventListener("DOMContentLoaded", () => {
 const homeIcon = document.getElementById("home-icon");
 const savedTheme = localStorage.getItem("theme");
 const logouticon = document.getElementById("logouticon");
@@ -152,12 +153,11 @@ if (savedTheme === "dark") {
     homeIcon.src = "assets/home.png";
     logouticon.src = "assets/on-off-power-button-189106.png";
 }
+});
+
+const homeIcon = document.getElementById("home-icon");  
 
 // theme switcher button
-
-
-
-
 document
     .getElementById("theme-switcher-grid")
     
