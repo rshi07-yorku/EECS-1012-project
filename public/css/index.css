@@ -78,6 +78,7 @@ body {
     color: var(--btn-text);
     background: var(--btn-color);
     border-radius: 10px;
+    cursor: pointer;
 }
 
 .header-right {
