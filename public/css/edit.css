@@ -112,6 +112,11 @@ textarea {
     margin: auto;
     resize: none;
     transition: all 0.8s ease;
+
+    /* fixes*/
+    padding: 25px;      /* Pushes text down and to the right, away from rounded corners */
+    font-size: 16px;    /* Makes text easier to read */
+    line-height: 1.5;   /* Adds breathing room between lines */
 }
 
 textarea:focus {
