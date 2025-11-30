@@ -45,6 +45,18 @@ body {
     background-color: var(--header-color);
     transition: all 0.8s ease;
 }
+#logout {
+    background: none;
+    border: none;
+    image-resolution: 100;
+    cursor: pointer;
+    margin-left: 10px;
+    position: relative;
+    margin-left: 1700px;
+    transition: background 0.3s ease;
+}
+
+
 
 .home{
     position: relative;
