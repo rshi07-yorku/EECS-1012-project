@@ -13,6 +13,8 @@ async function checkUser() {
         if (!data.loggedIn) {
             window.location.href = "login.html";
         } else {
+            // --- NEW LINE HERE ---
+            document.getElementById('welcome-msg').textContent = `Welcome ${data.username}`;
             return data.username;
         }
     } catch (err) {

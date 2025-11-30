@@ -7,5 +7,11 @@
   },
   "test": {
     "password": "test"
+  },
+  "david": {
+    "password": "1234"
+  },
+  "DavidJing": {
+    "password": "1234"
   }
 }
