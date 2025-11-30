@@ -156,9 +156,11 @@ document
     .getElementById("theme-switcher-grid")
     
     .addEventListener("click", function () {
+        logout.classList.toggle("on");
         document.body.classList.remove("no-animation");
+        
         this.classList.toggle("night-theme");
-         logout.classList.toggle("on");
+        
         
 
         if (this.classList.contains("night-theme")) {
