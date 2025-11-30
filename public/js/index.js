@@ -135,35 +135,29 @@ function setTheme(theme) {
     });
 }
 
-// home icon 
+// home icon and logout icon
 const homeIcon = document.getElementById("home-icon");
 const savedTheme = localStorage.getItem("theme");
+const logouticon = document.getElementById("logouticon");
 
 // set icon correctly on page load
 if (savedTheme === "dark") {
     setTheme('dark');
     document.getElementById("theme-switcher-grid").classList.add("night-theme");
     homeIcon.src = "assets/homedark.png";
-} else {
-    setTheme('light');
-    document.getElementById("theme-switcher-grid").classList.remove("night-theme");
-    homeIcon.src = "assets/home.png";
-}
-
-// theme switcher button
-const logouticon = document.getElementById("logouticon");
-
-
-
-if (savedTheme === "dark") {
-    setTheme('dark');
-    document.getElementById("theme-switcher-grid").classList.add("night-theme");
     logouticon.src = "assets/gradient-power-button-icon-189101.png";
 } else {
     setTheme('light');
     document.getElementById("theme-switcher-grid").classList.remove("night-theme");
+    homeIcon.src = "assets/home.png";
     logouticon.src = "assets/on-off-power-button-189106.png";
 }
+
+// theme switcher button
+
+
+
+
 document
     .getElementById("theme-switcher-grid")
     
