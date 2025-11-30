@@ -112,8 +112,12 @@ function setTheme(theme) {
         root.style.setProperty(prop, value);
     });
 }
+const homeIcon = document.getElementById("home-icon");
+
+const logouticon = document.getElementById("logouticon");
 
 document
+
     .getElementById("theme-switcher-grid")
     .addEventListener("click", function () {
         document.body.classList.remove("no-animation");
