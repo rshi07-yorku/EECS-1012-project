@@ -1,6 +1,4 @@
-
 :root {
-
     /* colours for switch*/
     --bg-color-light: #eff1f5;
     --bg-color-dark: #1e1e2e;
@@ -34,46 +32,47 @@ body {
     word-wrap: break-word;
     transition: all 0.8s ease;
 }
+
 .header {
     display: flex;
     height: 10%;
     width: 100%;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     position: fixed;
     top: 0;
     background-color: var(--header-color);
     transition: all 0.8s ease;
+    padding: 20px 10px; 
+    gap: 20px;
+    z-index: 100;
 }
+
+.header-right {
+    display: flex;
+    align-items: center;
+    margin-left: auto; /* Pushes this group to the far right */
+    gap: 40px;         /* Spacing between Switch and Logout */
+}
+
 #logout {
     background: none;
     border: none;
     image-resolution: 100;
     cursor: pointer;
-    margin-left: 10px;
     position: relative;
-    margin-left: 1700px;
     transition: background 0.3s ease;
+    /* Removed all margins, gap handles spacing now */
 }
-
 
 .home-icon {
     width: 40px;
     height: 40px;
-    position: relative;
-    left: 0;
-    top: 0;
     cursor: pointer;
     background: none;
+    display: block; /* Ensures icon sits correctly in the link */
 }
-
-
-.home{
-    position: relative;
-    width: 50px;
-    height: 50px;
-    left: 2%;
-}
+/* --- HEADER FIXES END --- */
 
 .container{
     width: 100%;
@@ -120,31 +119,6 @@ textarea:focus {
     outline-offset: 5px;
     border-radius: 20px;
     box-shadow: 0px 0px 25px 1px rgba(0,0,0,0.35);
-
-}
-
-
-.btn {
-    position: fixed;
-    bottom: 5%;
-    /* slightly above footer */
-    right: 3%;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    border: none;
-    background-color: var(--btn-color);
-    color: var(--btn-text);
-    font-size: 20px;
-    cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.edit-btn:hover {
-    background-color: var(--btn-hover);
 }
 
 ul, ol, li {
@@ -153,39 +127,29 @@ ul, ol, li {
 }
 
 pre, code {
-font-family: 'Fira Code', 'JetBrains Mono', monospace;
-font-size: 0.95rem;
-line-height: 1.5;
-background-color: var(--header-color); 
-color: var(--text-color); 
-padding: 0.4em 0.6em;
-border-radius: 8px;
-overflow-x: auto;
-tab-size: 4;
+    font-family: 'Fira Code', 'JetBrains Mono', monospace;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    background-color: var(--header-color); 
+    color: var(--text-color); 
+    padding: 0.4em 0.6em;
+    border-radius: 8px;
+    overflow-x: auto;
+    tab-size: 4;
 }
 
-
-/* <pre> specific tweaks */
 pre {
-padding: 1em;
-margin: 1em 0;
-background-color: #11111b;
-}
-a:link{
-    color: #89b4fa;
-}
-a:hover{
-    color: #89b4fac2;
-}
-a {
-    color: var(--link-color);
-}
-a:hover {
-    color: #66a4af;
+    padding: 1em;
+    margin: 1em 0;
+    background-color: #11111b;
 }
 
-/* this is for fancy switch button*/
+a:link{ color: #89b4fa; }
+a:hover{ color: #89b4fac2; }
+a { color: var(--link-color); }
+a:hover { color: #66a4af; }
 
+/* --- THEME SWITCHER --- */
 body.no-animation, .no-animation * {
     transition: none !important;
     animation: none !important;
@@ -203,7 +167,7 @@ body.no-animation, .no-animation * {
     grid-template-rows: repeat(24, 1px);
     gap: 0;
     position: relative;
-    right: 30px;
+    /* REMOVED: right: 30px; -> This was causing the overlap */
     background-color: var(--day-bg-color);
     border-radius: 49px;
     border: 1px solid var(--border-color-light);
@@ -259,53 +223,15 @@ body.no-animation, .no-animation * {
     z-index: 2;
 }
 
-#ball1 {
-    top: calc((8 / 24) * 100%);
-    left: calc((12 / 54) * 100%);
-}
+#ball1 { top: calc((8 / 24) * 100%); left: calc((12 / 54) * 100%); }
+#ball2 { top: calc((8 / 24) * 100%); left: calc((17 / 54) * 100%); }
+#ball3 { top: calc((8 / 24) * 100%); left: calc((22 / 54) * 100%); }
+#ball4 { top: calc((6 / 24) * 100%); left: calc((17 / 54) * 100%); }
 
-#ball2 {
-    top: calc((8 / 24) * 100%);
-    left: calc((17 / 54) * 100%);
-}
-
-#ball3 {
-    top: calc((8 / 24) * 100%);
-    left: calc((22 / 54) * 100%);
-}
-
-#ball4 {
-    top: calc((6 / 24) * 100%);
-    left: calc((17 / 54) * 100%);
-}
-
-.theme-switcher-grid.night-theme #ball1 {
-    top: calc((16 / 24) * 100%);
-    left: calc((16 / 54) * 100%);
-    width: 2px;
-    height: 2px;
-}
-
-.theme-switcher-grid.night-theme #ball2 {
-    top: calc((3 / 24) * 100%);
-    left: calc((22 / 54) * 100%);
-    width: 2px;
-    height: 2px;
-}
-
-.theme-switcher-grid.night-theme #ball3 {
-    top: calc((10 / 24) * 100%);
-    left: calc((29 / 54) * 100%);
-    width: 2px;
-    height: 2px;
-}
-
-.theme-switcher-grid.night-theme #ball4 {
-    top: calc((5 / 24) * 100%);
-    left: calc((34 / 54) * 100%);
-    width: 2px;
-    height: 2px;
-}
+.theme-switcher-grid.night-theme #ball1 { top: calc((16 / 24) * 100%); left: calc((16 / 54) * 100%); width: 2px; height: 2px; }
+.theme-switcher-grid.night-theme #ball2 { top: calc((3 / 24) * 100%); left: calc((22 / 54) * 100%); width: 2px; height: 2px; }
+.theme-switcher-grid.night-theme #ball3 { top: calc((10 / 24) * 100%); left: calc((29 / 54) * 100%); width: 2px; height: 2px; }
+.theme-switcher-grid.night-theme #ball4 { top: calc((5 / 24) * 100%); left: calc((34 / 54) * 100%); width: 2px; height: 2px; }
 
 .star {
     background-color: var(--star-color);
@@ -316,29 +242,10 @@ body.no-animation, .no-animation * {
     transition: opacity 0.8s ease;
 }
 
-#star1 {
-    top: calc((7 / 24) * 100%);
-    left: calc((10 / 54) * 100%);
-    border-radius: 50%;
-}
-
-#star2 {
-    top: calc((9 / 24) * 100%);
-    left: calc((16 / 54) * 100%);
-    border-radius: 50%;
-}
-
-#star3 {
-    top: calc((13 / 24) * 100%);
-    left: calc((23 / 54) * 100%);
-    border-radius: 50%;
-}
-
-#star4 {
-    top: calc((18 / 24) * 100%);
-    left: calc((29 / 54) * 100%);
-    border-radius: 50%;
-}
+#star1 { top: calc((7 / 24) * 100%); left: calc((10 / 54) * 100%); border-radius: 50%; }
+#star2 { top: calc((9 / 24) * 100%); left: calc((16 / 54) * 100%); border-radius: 50%; }
+#star3 { top: calc((13 / 24) * 100%); left: calc((23 / 54) * 100%); border-radius: 50%; }
+#star4 { top: calc((18 / 24) * 100%); left: calc((29 / 54) * 100%); border-radius: 50%; }
 
 .theme-switcher-grid.night-theme #star1,
 .theme-switcher-grid.night-theme #star2,
@@ -346,5 +253,3 @@ body.no-animation, .no-animation * {
 .theme-switcher-grid.night-theme #star4 {
     opacity: 1;
 }
-
-/* this is the end of switch button*/

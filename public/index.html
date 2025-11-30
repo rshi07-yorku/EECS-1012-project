@@ -6,27 +6,15 @@
     <meta charset="UTF-8">
     <title>Homepage - Diary</title>
     <link rel="stylesheet" href="css/index.css">
-    
-
 </head>
 
 <body>
 
-    <!--These seem to be all the functionality we need for the homepage and users
-    can just click on them for the full picture of what they can do-->
-    <!-- Will implement after the backend is written -->
     <div class="header">
 
         <img src="assets/home.png" alt="Home Icon" class="home-icon" id="home-icon">
 
-       
-        <button type="button" class="header-btn" id="logout">
-            
-            <img id = "logouticon" src="assets/on-off-power-button-189106.png" alt ="logout" width="20" height="20">
-        </button>
-
         <div class="header-right">
-            <!-- fancy switch -->
             <button type="button" class="theme-switcher-grid" id="theme-switcher-grid" aria-label="Switch theme">
                 <div class="sun" id="sun" aria-hidden="true"></div>
                 <div class="moon-overlay" id="moon-overlay" aria-hidden="true"></div>
@@ -39,22 +27,20 @@
                 <div class="star" id="star3" aria-hidden="true"></div>
                 <div class="star" id="star4" aria-hidden="true"></div>
             </button>
-            <!-- fancy switch ends-->
+            <button type="button" class="header-btn" id="logout">
+                <img id="logouticon" src="assets/on-off-power-button-189106.png" alt="logout" width="20" height="20">
+            </button>
         </div>
     </div>
 
     <div class="not-header">
          <button type="button" class="header-btn" id="edit-btn">
             Write Diary Entry
-            
         </button>
         <button type="button" class="collapsible">Diary Entry Logs</button>
         <div class="file-list" id="file-list">
         </div>
     </div>
-
-
-
 
 </body>
 <script src="js/index.js" defer></script>
