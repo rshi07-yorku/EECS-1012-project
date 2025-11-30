@@ -31,22 +31,36 @@
     box-sizing: border-box;
     font-family: Arial, sans-serif;
 }
-#edit-btn{
-    background-color: var(--btn-color);
-    color: var(--btn-text);
-    cursor: pointer;
-    padding: 18px;
-    width: 97%;
-    border: black;
-    text-align: left;
-    outline: black;
-    font-size: 30px;
-    position: relative;
-    bottom: 10px;
-    left: 10px;
-  text-align: center;
-
+#edit-btn {
+background: linear-gradient(135deg, var(--btn-color), var(--btn-hover));
+color: var(--btn-text);
+cursor: pointer;
+padding: 18px;
+width: 100%;
+border: none; /* remove plain black border */
+border-radius: 12px; /* smooth corners */
+font-size: 30px;
+position: relative;
+bottom: 20px;
+text-align: center;
+box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* subtle depth */
+transition: all 0.3s ease; /* smooth hover effect */
+font-weight: bold;
 }
+
+/* Hover state */
+#edit-btn:hover {
+transform: translateY(-3px); /* subtle lift */
+box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+background: linear-gradient(135deg, var(--btn-hover), var(--btn-color));
+}
+
+/* Active click state */
+#edit-btn:active {
+transform: translateY(0);
+box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
 
 body {
     
@@ -129,32 +143,40 @@ body {
 
 /* collapsible part */
 .collapsible {
-    background-color: var(--btn-color);
-    color: var(--btn-text);
-    cursor: pointer;
-    padding: 18px;
-    width: 100%;
-    border: none;
-    text-align: left;
-    outline: none;
-    font-size: 15px;
+background: linear-gradient(135deg, var(--btn-color), var(--btn-hover));
+color: var(--btn-text);
+cursor: pointer;
+padding: 18px;
+width: 100%;
+border: none;
+text-align: left;
+font-size: 15px;
+border-radius: 10px;
+box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+transition: all 0.3s ease;
+font-weight: bold;
 }
 
-.active,
-.collapsible:hover {
-    background-color: var(--btn-hover);
+.collapsible:hover,
+.active {
+background: linear-gradient(135deg, var(--btn-hover), var(--btn-color));
+transform: translateY(-2px);
+box-shadow: 0 6px 12px rgba(0,0,0,0.25);
 }
 
+/* Optional: make the file list look more cohesive */
 .file-list {
-    position: static;
-    overflow: hidden;
-    background-color: var(--coll-color);
-    max-height: 0;
-    transition: max-height 0.2s ease-out, background-color 0.8s ease, color 0.8s ease;
+position: static;
+overflow: hidden;
+background-color: var(--coll-color);
+max-height: 0;
+border-radius: 8px;
+transition: max-height 0.3s ease-out, background-color 0.8s ease, color 0.8s ease;
+box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
 }
 
 div.file-list * {
-    padding: 20px;
+padding: 20px;
 }
 
 /* this is for fancy switch button*/
