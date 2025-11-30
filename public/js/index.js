@@ -158,11 +158,11 @@ const logout = document.getElementById("logouticon");
 if (savedTheme === "dark") {
     setTheme('dark');
     document.getElementById("theme-switcher-grid").classList.add("night-theme");
-    logouticon.src = "assets/gradient-power-button-icon-189101.png";
+    logout.src = "assets/gradient-power-button-icon-189101.png";
 } else {
     setTheme('light');
     document.getElementById("theme-switcher-grid").classList.remove("night-theme");
-    logouticon.src = "assets/on-off-power-button-189106.png";
+    logout.src = "assets/on-off-power-button-189106.png";
 }
 document
     .getElementById("theme-switcher-grid")
