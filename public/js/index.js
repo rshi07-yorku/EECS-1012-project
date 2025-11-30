@@ -173,9 +173,12 @@ document
             setTheme('dark');
             localStorage.setItem("theme", "dark");
             homeIcon.src = "assets/homedark.png";
+            logouticon.src = "assets/gradient-power-button-icon-189101.png";
         } else {
             setTheme('light');
             localStorage.setItem("theme", "light");
             homeIcon.src = "assets/home.png";
+            logouticon.src = "assets/on-off-power-button-189106.png";
+
         }
     });
