@@ -65,6 +65,7 @@ body {
     position: relative;
     left: 0;
     top: 0;
+    cursor: pointer;
 }
 
 
@@ -86,9 +87,10 @@ body {
 }
 
 #logout {
-    background: none;
+    background: url("on-off-power-button-189106.png");
     border: none;
     image-resolution: 100;
+    cursor: pointer;
     margin-left: 10px;
     position: relative;
     margin-left: 1539px;

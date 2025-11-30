@@ -151,13 +151,14 @@ if (savedTheme === "dark") {
 }
 
 // theme switcher button
+const logout = document.getElementById("logout");
 document
     .getElementById("theme-switcher-grid")
-    // .getElementById("logout")
+    
     .addEventListener("click", function () {
         document.body.classList.remove("no-animation");
         this.classList.toggle("night-theme");
-        // logoutbtn.classList.toggle("on");
+         logout.classList.toggle("on");
         
 
         if (this.classList.contains("night-theme")) {
