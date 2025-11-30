@@ -139,8 +139,12 @@ const savedTheme = localStorage.getItem("theme");
 if (savedTheme === "dark") {
     setTheme('dark');
     document.getElementById("theme-switcher-grid").classList.add("night-theme");
+    homeIcon.src = "assets/homedark.png";
+            logouticon.src = "assets/gradient-power-button-icon-189101.png";
 } else {
     setTheme('light');
     document.getElementById("theme-switcher-grid").classList.remove("night-theme");
+     homeIcon.src = "assets/home.png";
+    logouticon.src = "assets/on-off-power-button-189106.png";
 }
 
