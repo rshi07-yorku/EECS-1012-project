@@ -185,5 +185,5 @@ document
         }
     });
 
-    export { checkUser, listEntries, setTheme, themes };
+    // export { checkUser, listEntries, setTheme, themes }; Un-comment this line to enable testing
 
