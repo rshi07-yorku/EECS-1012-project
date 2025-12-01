@@ -184,3 +184,6 @@ document
 
         }
     });
+
+    export { checkUser, listEntries, setTheme, themes };
+
