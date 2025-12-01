@@ -123,15 +123,17 @@ body {
 .header-right {
     display: flex;
     align-items: center;
-    margin-left: auto; /* Pushes the group to the far right */
-    gap: 40px;         /* Adds the specific spacing between the switch and logout button */
-}
+    margin-left: auto; /* Pushes this group to the far right */
+    /* gap: 5px;         /* Adds the specific spacing between the switch and logout button */
+} 
 
 #logout {
     background: none;
     border: none;
     image-resolution: 100;
     cursor: pointer;
+    right: 15px;
+    
     /* margins removed because we are using gap in the parent container now */
     position: relative;
     transition: background 0.3s ease;
